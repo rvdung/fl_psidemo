@@ -10,7 +10,7 @@ angular.module('starter.controllers', [])
   //
   //$scope.$on('$ionicView.enter', function(e) {
   //});
-	$scope.hehe ="Hehe";
+
   $scope.chats = Chats.all();
   $scope.remove = function(chat) {
     Chats.remove(chat);
@@ -25,4 +25,13 @@ angular.module('starter.controllers', [])
   $scope.settings = {
     enableFriends: true
   };
+})
+  
+ 
+.controller('CalendarTestCtrl', function($scope) {
+    $scope.testString = "Hello";
+	
+	$scope.showCalendar = function() {		 
+		  window.plugins.calendar.openCalendar();
+	};
 });
