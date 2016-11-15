@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'ngCordova'])
+angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'pdf', 'ngCordova'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -87,9 +87,20 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
         controller: 'CalendarTestCtrl'
       }
     }
+  })
+  
+  .state('tab.pdfviewer', {
+    url: '/pdfviewer',
+    views: {
+      'tab-pdf-viewer': {
+        templateUrl: 'templates/tab-pdf-viewer.html',
+        controller: 'PDFCtrl'
+      }
+    }
   });
 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/tab/dash');
 
-});
+})
+

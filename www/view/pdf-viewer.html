@@ -1,0 +1,19 @@
+<!-- buttons should be hidden, one-touch it will display -->
+<!-- add back button, home button -->
+<!-- deal with scroll bar -->
+<!-- re-position buttons -->
+<nav ion-nav ng-class="getNavStyle(scroll)">
+<div>
+	<button ion-button ng-click="goPrevious()">previous</button>
+	<button ion-button ng-click="goNext()">forward</button>
+	<button ion-button ng-click="zoomIn()">+</button>
+	<button ion-button ng-click="fit()">100%</button>
+	<button ion-button ng-click="zoomOut()">-</button>
+	<input type="text" min=1 ng-model="pageNum">/
+		{{pageCount}}
+</div>
+</nav>
+
+<hr>
+{{loading}}
+<canvas ionic-canvas id="pdf" class="rotate0"></canvas>
