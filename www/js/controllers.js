@@ -28,6 +28,26 @@ angular.module('starter.controllers', [])
 })
   
  
+ 
+ 
+.controller('FileTransferTest', function($scope,$cordovaFileTransfer) {
+    $scope.url = "https://www.ato.gov.au/uploadedFiles/Content/MEI/downloads/Personal_services_income_guide.pdf";
+	
+	$scope.downloadFile = function () {
+             var targetPath = cordova.file.externalRootDirectory + 'Pictures/psi.pdf';
+  
+              $cordovaFileTransfer.download($scope.url, targetPath, {}, true).then(function (result) {
+                    $scope.hasil = 'Save file on '+targetPath+' success!';
+                    $scope.mywallpaper=targetPath;
+              }, function (error) {
+                    $scope.hasil = 'Error Download file';
+              }, function (progress) {
+                    $scope.downloadProgress = (progress.loaded / progress.total) * 100;
+              });
+			  
+    }
+})
+
 .controller('CalendarTestCtrl', function($scope) {
     $scope.testString = "Hello";
 	
