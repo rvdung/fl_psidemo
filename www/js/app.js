@@ -1,6 +1,6 @@
-angular.module(
-		'starter',
-		[ 'ionic', 'starter.controllers', 'starter.services', 'pdf',
+var psiApp = angular.module(
+		'psiApp',
+		[ 'ionic',  'pdf',
 				'ngCordova' ])
 
 .run(
@@ -18,7 +18,7 @@ angular.module(
 			});
 		})
 
-.config(function($stateProvider, $urlRouterProvider) {
+.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
 
 	$ionicConfigProvider.tabs.position('bottom');
 	$stateProvider
@@ -75,7 +75,7 @@ angular.module(
 		views : {
 			'tab-calendar' : {
 				templateUrl : 'templates/tab-calendar.html',
-				controller : 'CalendarTestCtrl'
+				controller : 'CalendarCtrl'
 			}
 		}
 	})
