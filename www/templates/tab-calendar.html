@@ -5,4 +5,14 @@
       Show calendar
     </ion-option-button>
   </ion-content>
+  
+  <div  ng-controller="FileTransferTest" >		
+		 <span>Download progress : {{downloadProgress}} %</span>
+		 <br/>
+		<button class="button button-calm" ng-click="downloadFile()">
+          Download file
+        </button>
+		{{hasil}}
+		<br/>
+	</div>
 </ion-view>

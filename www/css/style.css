@@ -1,12 +1,19 @@
 /* PDF viewer */
 .nav_btn_div {
 	position: absolute;
-	bottom: 50%;
+	bottom: 40%;
 	width: 100%;
 }
-.nav_btn{width:10%;}
-.page_number_div{}
-.
+.scroll{height:100% !important}
+.nav_btn {
+	width: 10%;
+}
+.page_number_div {
+	position: absolute;
+	bottom: 5%;
+	width: 100%;
+}
 .pdf_page {
-	
+	height: 100%;
+	width: 100%;
 }
