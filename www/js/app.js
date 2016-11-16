@@ -1,7 +1,7 @@
 var psiApp = angular.module(
 		'psiApp',
 		[ 'ionic',  'pdf',
-				'ngCordova' ])
+				'ngCordova' ,'$actionButton'])
 
 .run(
 		function($ionicPlatform) {
@@ -50,7 +50,9 @@ var psiApp = angular.module(
 				controller : 'ChatsCtrl'
 			}
 		}
-	}).state('tab.chat-detail', {
+	})
+	
+	.state('tab.chat-detail', {
 		url : '/chats/:chatId',
 		views : {
 			'tab-chats' : {
@@ -59,6 +61,17 @@ var psiApp = angular.module(
 			}
 		}
 	})
+	
+	.state('tab.calendar', {
+		url : '/calendar',
+		views : {
+			'tab-calendar' : {
+				templateUrl : 'templates/tab-calendar.html',
+				controller : 'CalendarCtrl'
+			}
+		}
+	})
+	
 
 	.state('tab.account', {
 		url : '/account',
@@ -70,15 +83,7 @@ var psiApp = angular.module(
 		}
 	})
 
-	.state('tab.calendar', {
-		url : '/calendar',
-		views : {
-			'tab-calendar' : {
-				templateUrl : 'templates/tab-calendar.html',
-				controller : 'CalendarCtrl'
-			}
-		}
-	})
+	
 
 	.state('tab.pdfviewer', {
 		url : '/pdfviewer',

@@ -1,18 +1,12 @@
+<ion-view view-title="Calendar"> <ion-content>
+<button class="button button-assertive" ng-click="showCalendar()">
+Show calendar </button>
 
-<ion-view view-title="Calendar">
-  <ion-content>
-    <ion-option-button class="button-assertive" ng-click="showCalendar()">
-      Show calendar
-    </ion-option-button>
-  </ion-content>
-  
-  <div  ng-controller="FileTransferTest" >		
-		 <span>Download progress : {{downloadProgress}} %</span>
-		 <br/>
-		<button class="button button-calm" ng-click="downloadFile()">
-          Download file
-        </button>
-		{{hasil}}
-		<br/>
-	</div>
-</ion-view>
+<!-- 
+<div ng-controller="FileTransferCtrl">
+	<span>Download progress : {{downloadProgress}} %</span> <br />
+	<button class="button button-calm" ng-click="downloadFile()">
+		Download file</button>
+	{{hasil}} <br />
+</div> -->
+</ion-content> </ion-view>
