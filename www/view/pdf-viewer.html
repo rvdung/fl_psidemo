@@ -3,28 +3,26 @@
 <!-- deal with scroll bar -->
 <!-- re-position buttons -->
 <div style="height: 100%; width: 100%;">
+	{{loading}}
+	<ion-content on-double-tap="zoomIn()" scroll="true" direction="xy"
+		padding="false">
+	<canvas ionic-canvas id="pdf"></canvas>
+	</ion-content>
 	<div class="row nav_btn_div">
 		<button
 			class="nav_btn button icon-left ion-chevron-left button-clear button-dark"
 			ng-click="goPrevious()"></button>
-		<div style="width: 70%;"></div>
+		<div style="width: 80%;"></div>
 		<button
 			class="nav_btn button icon-right ion-chevron-right button-clear button-dark"
 			ng-click="goNext()"></button>
 	</div>
-	<div class="row">
-		<span> <!-- <button class="button button-clear button-positive col"
-				ng-click="zoomIn()">+</button>
-			<button class="button button-clear button-positive col"
-				ng-click="fit()">100%</button>
-			<button class="button button-clear button-positive col"
-				ng-click="zoomOut()">-</button> --> <input type="text" class="col" min=1 max={{pageCount}}
-			ng-model="pageNum">
+	<div class="page_number_div">
+		<span class="row row-center page_number_span"> <!-- <button class="button button-clear button-positive col"
+					ng-click="zoomIn()">+</button> --> <input type="number" min=1
+			max={{pageCount}} ng-model="pageNum">
 			<div>/{{pageCount}}</div>
 		</span>
 	</div>
-	{{loading}}
-	<div style="height: 100%; align-content:center">
-		<canvas ionic-canvas id="pdf" class="rotate0"></canvas>
-	</div>
+
 </div>

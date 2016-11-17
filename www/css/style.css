@@ -1,19 +1,34 @@
 /* PDF viewer */
 .nav_btn_div {
 	position: absolute;
-	bottom: 40%;
+	bottom: 45%;
 	width: 100%;
 }
-.scroll{height:100% !important}
+
 .nav_btn {
 	width: 10%;
 }
+
 .page_number_div {
 	position: absolute;
-	bottom: 5%;
+	bottom: 10%;
 	width: 100%;
 }
-.pdf_page {
-	height: 100%;
+
+.page_number_span {
+	margin: 0 auto;
+	width: 20%;
+}
+
+.ng_pdf {
 	width: 100%;
+	height: 100%;
+}
+
+.scroll {
+	height: 100% !important
+}
+
+.pdf_page {
+	
 }
