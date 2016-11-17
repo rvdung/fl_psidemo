@@ -1,4 +1,3 @@
-
 psiApp
 		.controller(
 				'PDFCtrl',
@@ -27,5 +26,5 @@ psiApp
 					$scope.onProgress = function(progress) {
 						console.log(progress);
 					}
-
+					
 				});
