@@ -1,13 +1,13 @@
-psiApp.factory('MenuService', function() {
+psiApp.factory('ProvincesService', function($http) {
+
+	var getAll = function() {
+		$http.get('resources/json/provinces.json').success(function(response) {
+			console.log('response' + ': ' + response);
+			return response;
+		});
+	};
 
 	return {
-		getAll : function() {
-			return null;
-			// TODO: implement
-		},
-		getMenuByProvince : function(provinceCode) {
-			return null;
-			// TODO: implement
-		}
+		getAll : getAll
 	};
 });
