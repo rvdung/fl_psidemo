@@ -43,8 +43,7 @@
         var pageFit = attrs.scale === 'page-fit';
         var scale = attrs.scale > 0 ? attrs.scale : 1;
         var canvasid = attrs.canvasid || 'pdf-canvas';
-        var canvas = document.getElementById(canvasid);
-
+        var canvas = element.find('canvas')[0];
         debug = attrs.hasOwnProperty('debug') ? attrs.debug : false;
         var creds = attrs.usecredentials;
         var ctx = canvas.getContext('2d');
@@ -73,7 +72,8 @@
               viewport = page.getViewport(1);
               var clientRect = element[0].getBoundingClientRect();
               pageWidthScale = clientRect.width / viewport.width;
-              scale = pageWidthScale;
+              //fixed scale
+              scale = pageWidthScale-0.4;
             }
             viewport = page.getViewport(scale);
 
