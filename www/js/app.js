@@ -88,8 +88,8 @@ var psiApp = angular.module(
 	.state('tab.pdfviewer', {
 		url : '/pdfviewer',
 		views : {
-			'tab-pdf-viewer' : {
-				templateUrl : 'templates/tab-pdf-viewer.html',
+			'tab-pdf-viewer-test' : {
+				templateUrl : 'templates/tab-pdf-viewer-test.html',
 				controller : 'PDFCtrl'
 			}
 		}
