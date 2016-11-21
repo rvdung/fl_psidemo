@@ -1,7 +1,7 @@
-angular.module(
-		'starter',
-		[ 'ionic', 'starter.controllers', 'starter.services', 'pdf',
-				'ngCordova' ])
+var psiApp = angular.module(
+		'psiApp',
+		[ 'ionic',  'pdf',
+				'ngCordova' ,'$actionButton'])
 
 .run(
 		function($ionicPlatform) {
@@ -18,7 +18,7 @@ angular.module(
 			});
 		})
 
-.config(function($stateProvider, $urlRouterProvider) {
+.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
 
 	$ionicConfigProvider.tabs.position('bottom');
 	$stateProvider
@@ -50,7 +50,9 @@ angular.module(
 				controller : 'ChatsCtrl'
 			}
 		}
-	}).state('tab.chat-detail', {
+	})
+	
+	.state('tab.chat-detail', {
 		url : '/chats/:chatId',
 		views : {
 			'tab-chats' : {
@@ -59,6 +61,17 @@ angular.module(
 			}
 		}
 	})
+	
+	.state('tab.calendar', {
+		url : '/calendar',
+		views : {
+			'tab-calendar' : {
+				templateUrl : 'templates/tab-calendar.html',
+				controller : 'CalendarCtrl'
+			}
+		}
+	})
+	
 
 	.state('tab.account', {
 		url : '/account',
@@ -70,21 +83,13 @@ angular.module(
 		}
 	})
 
-	.state('tab.calendar', {
-		url : '/calendar',
-		views : {
-			'tab-calendar' : {
-				templateUrl : 'templates/tab-calendar.html',
-				controller : 'CalendarTestCtrl'
-			}
-		}
-	})
+	
 
 	.state('tab.pdfviewer', {
 		url : '/pdfviewer',
 		views : {
-			'tab-pdf-viewer' : {
-				templateUrl : 'templates/tab-pdf-viewer.html',
+			'tab-pdf-viewer-test' : {
+				templateUrl : 'templates/tab-pdf-viewer-test.html',
 				controller : 'PDFCtrl'
 			}
 		}

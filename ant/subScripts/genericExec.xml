@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+
+<project default="" >
+	<target name="execWin" unless="linux">
+		<exec executable="cmd">
+			<arg value="/C" />
+			<arg value="${command} ${args}" />
+		</exec>
+	</target>
+
+	<target name="execLinux" unless="windows">
+		<exec executable="${command}">
+			<arg line="${args}" />
+		</exec>
+	</target>
+
+	<target name="genericExec" depends="execWin, execLinux">
+
+	</target>
+</project>
