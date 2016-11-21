@@ -65,7 +65,12 @@
                         var clientRect = element[0].getBoundingClientRect();
                         var viewport = page.getViewport(1);
                         //portrait
-                        var pageWidthScalePortrait = clientRect.width / viewport.width;
+                        var pageWidthScalePortrait;
+                        if (clientRect.width < clientRect.height) {
+                            pageWidthScalePortrait = clientRect.width / viewport.width;
+                        } else {
+                            pageWidthScalePortrait = clientRect.height / viewport.width;
+                        }
                         var viewportPortrait = page.getViewport(pageWidthScalePortrait);
                         setCanvasDimensions(canvasPortrait, viewportPortrait.width, viewportPortrait.height);
                         var renderContextPortrait = {
@@ -82,8 +87,14 @@
                         });
 
                         //Landscape
-                        var pageWidthScaleLandscape = clientRect.height / viewport.height;
+                        var pageWidthScaleLandscape;
+                        if (clientRect.height > clientRect.width) {
+                            pageWidthScaleLandscape = clientRect.width / viewport.height;
+                        } else {
+                            pageWidthScaleLandscape = clientRect.height / viewport.height;
+                        }
                         var viewportLandscape = page.getViewport(pageWidthScaleLandscape);
+
                         setCanvasDimensions(canvasLandscape, viewportLandscape.width, viewportLandscape.height);
                         var renderContextLandscape = {
                             canvasContext: ctxLandscape,
