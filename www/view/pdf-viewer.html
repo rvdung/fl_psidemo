@@ -5,9 +5,10 @@
 <!-- <div ng-controller='viewPDFCtrl' style="height: 100%; width: 100%;"> -->
 <ion-content scroll="false" style="max-width: 100%; max-width: 100%;" ng-controller='viewPDFCtrl'>
     <!-- This is portrait canvas-->
-    <canvas ionic-canvas style="position: absolute;top:0;bottom: 0;left: 0;right: 0;margin:auto; display: none;"></canvas>
+    <canvas ionic-canvas id="portrait_id"></canvas>
     <!-- This is Landscape canvas -->
-    <canvas ionic-canvas style="position: absolute;top:0;bottom: 0;left: 0;right: 0;margin:auto; "></canvas>
+    <canvas ionic-canvas id="landscape_id">
+    </canvas>
 </ion-content>
 <!-- <div class="row nav_btn_div">
 		<button
@@ -19,3 +20,17 @@
 			ng-click="goNext()"></button>
 	</div> -->
 <!-- <div class="page_number_div">{{pageNum}}/{{pageCount}}</div -->
+<script>
+window.addEventListener("orientationchange", function() {
+            alert("change");
+            var portrait_canvas = document.getElementById('portrait_id');
+            var landscape_canvas = document.getElementById('landscape_id');
+            if (portrait_canvas.getAttribute('class') === 'displayPDF') {
+                portrait_canvas.setAttribute('class', 'hiddenPDF');
+                landscape_canvas.setAttribute('class', 'displayPDF');
+            } else {
+                landscape_canvas.setAttribute('class', 'hiddenPDF');
+                portrait_canvas.setAttribute('class', 'displayPDF');
+
+            }
+</script>
