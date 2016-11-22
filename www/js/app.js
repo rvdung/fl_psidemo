@@ -14,10 +14,9 @@ psiApp.run(function($ionicPlatform, $rootScope, ProvincesService) {
 		}
 	});
 
-	$rootScope.provinces = ProvincesService.getAll();
-	setTimeout(() => {
-		console.log('$rootScope.provinces: ' + $rootScope.provinces);
-	}, 10000);
+	ProvincesService.getAll(function(response){
+		$rootScope.provinces = response;
+	});
 });
 
 psiApp
