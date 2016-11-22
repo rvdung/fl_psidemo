@@ -4,7 +4,8 @@
     'use strict';
 
     angular.module('pdf', []).directive('ngPdf', ['$window', function($window) {
-        var renderTask = null;
+        var renderTaskPortrait = null;
+        var renderTaskLandscape = null;
         var pdfLoaderTask = null;
         var debug = false;
 
@@ -26,6 +27,7 @@
             canvas.height = Math.floor(h * ratio);
             canvas.style.width = Math.floor(w) + 'px';
             canvas.style.height = Math.floor(h) + 'px';
+
             canvas.getContext('2d').setTransform(ratio, 0, 0, ratio, 0, 0);
             return canvas;
         };
@@ -49,16 +51,21 @@
                 debug = attrs.hasOwnProperty('debug') ? attrs.debug : false;
                 var creds = attrs.usecredentials;
                 var ctxPortrait = canvasPortrait.getContext('2d');
+                ctxPortrait.textAlign = 'center';
                 var ctxLandscape = canvasLandscape.getContext('2d');
-
+                ctxLandscape.textAlign = 'center';
                 PDFJS.disableWorker = true;
                 scope.pageNum = pageToDisplay;
 
                 scope.renderPage = function(num) {
-                    if (renderTask) {
-                        renderTask._internalRenderTask.cancel();
+                    console.log('check cancel');
+                    if (renderTaskPortrait) {
+                        renderTaskPortrait = null;
                     }
-
+                    if (renderTaskLandscape) {
+                        renderTaskLandscape = null;
+                    }
+                    console.log('end check cancel');
                     pdfDoc.getPage(num).then(function(page) {
 
                         //find a way to create 2 page with width and height fit to screen or fixed width and height (720x1280)
@@ -73,12 +80,15 @@
                         }
                         var viewportPortrait = page.getViewport(pageWidthScalePortrait);
                         setCanvasDimensions(canvasPortrait, viewportPortrait.width, viewportPortrait.height);
+                        viewportPortrait.width = viewportPortrait.width * 3;
+                        viewportPortrait.height = viewportPortrait.height * 3;
+                        console.log(viewportPortrait.height);
                         var renderContextPortrait = {
                             canvasContext: ctxPortrait,
                             viewport: viewportPortrait
                         };
-                        renderTask = page.render(renderContextPortrait);
-                        renderTask.promise.then(function() {
+                        renderTaskPortrait = page.render(renderContextPortrait);
+                        renderTaskPortrait.promise.then(function() {
                             if (typeof scope.onPageRender === 'function') {
                                 scope.onPageRender();
                             }
@@ -94,22 +104,36 @@
                             pageWidthScaleLandscape = clientRect.height / viewport.height;
                         }
                         var viewportLandscape = page.getViewport(pageWidthScaleLandscape);
-
+                        console.log(viewportLandscape.width + "x" + viewportLandscape.height);
                         setCanvasDimensions(canvasLandscape, viewportLandscape.width, viewportLandscape.height);
                         var renderContextLandscape = {
                             canvasContext: ctxLandscape,
                             viewport: viewportLandscape
                         };
-                        renderTask = page.render(renderContextLandscape);
-                        renderTask.promise.then(function() {
+                        renderTaskLandscape = page.render(renderContextLandscape);
+                        renderTaskLandscape.promise.then(function() {
                             if (typeof scope.onPageRender === 'function') {
                                 scope.onPageRender();
                             }
                         }).catch(function(reason) {
                             console.log(reason);
                         });
+
+
+                        setClassForCanvas(canvasPortrait, canvasLandscape);
                     });
                 };
+
+                function setClassForCanvas(canvasPortrait, canvasLandscape) {
+                    console.log(window.orientation);
+                    if (window.orientation == 0 || window.orientation == 180) {
+                        canvasPortrait.setAttribute('class', 'displayPDF');
+                        canvasLandscape.setAttribute('class', 'hiddenPDF');
+                    } else {
+                        canvasLandscape.setAttribute('class', 'displayPDF');
+                        canvasPortrait.setAttribute('class', 'hiddenPDF');
+                    }
+                }
 
                 scope.goPrevious = function() {
                     if (scope.pageToDisplay <= 1) {
@@ -165,13 +189,13 @@
                     }
 
                     if (url && url.length) {
-                        pdfLoaderTask = PDFJS.getDocument(params, null, null, scope.onProgress);
+                        pdfLoaderTask = PDFJS.getDocument(params, null, null, scope.onProress);
                         pdfLoaderTask.then(
                             function(_pdfDoc) {
                                 if (typeof scope.onLoad === 'function') {
                                     scope.onLoad();
                                 }
-
+                                console.log('after load');
                                 pdfDoc = _pdfDoc;
                                 scope.renderPage(scope.pageToDisplay);
 
