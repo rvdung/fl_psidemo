@@ -144,7 +144,8 @@
     white-space: nowrap;
 
     font-size: $bar-title-font-size;
-    font-weight: $headings-font-weight;
+    font-weight: bold;
+    text-transform: uppercase;
 
     line-height: $bar-height;
 

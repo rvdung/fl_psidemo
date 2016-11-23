@@ -400,7 +400,8 @@ ion-tabs {
   font-size: $tabs-text-font-size;
   font-family: $font-family-sans-serif;
 
-  opacity: 0.7;
+  opacity: 1;
+  text-transform: uppercase;
 
   &:hover {
     cursor: pointer;

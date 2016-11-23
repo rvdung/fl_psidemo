@@ -1,5 +1,5 @@
 var psiApp = angular.module('psiApp', [ 'ionic', 'pdf', 'ngCordova',
-		'$actionButton' ]);
+		'$actionButton', 'ionic-material', 'ionMdInput' ]);
 
 psiApp.run(function($ionicPlatform, $rootScope, ProvincesService) {
 	$ionicPlatform.ready(function() {
@@ -35,12 +35,12 @@ psiApp
 
 			// Each tab has its own nav history stack:
 
-			.state('tab.dash', {
-				url : '/dash',
+			.state('tab.home', {
+				url : '/home',
 				views : {
-					'tab-dash' : {
-						templateUrl : 'templates/tab-dash.html',
-						controller : 'DashCtrl'
+					'tab-home' : {
+						templateUrl : 'templates/tab-home.html',
+						controller : 'HomeCtrl'
 					}
 				}
 			})
@@ -96,6 +96,6 @@ psiApp
 			});
 
 			// if none of the above states are matched, use this as the fallback
-			$urlRouterProvider.otherwise('/tab/dash');
+			$urlRouterProvider.otherwise('/tab/home');
 
 		});

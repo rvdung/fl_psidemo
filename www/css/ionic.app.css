@@ -3929,9 +3929,9 @@ a.subdued {
     border-color: #b2b2b2;
     background-color: #007a3d;
     background-image: linear-gradient(0deg, #b2b2b2, #b2b2b2 50%, transparent 50%);
-    color: #444; }
+    color: #ffffff; }
     .bar.bar-stable .title {
-      color: #444; }
+      color: #ffffff; }
     .bar.bar-stable.bar-footer {
       background-image: linear-gradient(180deg, #b2b2b2, #b2b2b2 50%, transparent 50%); }
   .bar.bar-positive {
@@ -4012,7 +4012,8 @@ a.subdued {
     text-overflow: ellipsis;
     white-space: nowrap;
     font-size: 17px;
-    font-weight: 500;
+    font-weight: bold;
+    text-transform: uppercase;
     line-height: 44px; }
     .bar .title.title-left {
       text-align: left; }
@@ -4119,9 +4120,9 @@ a.subdued {
 .bar-stable .button {
   border-color: #b2b2b2;
   background-color: #007a3d;
-  color: #444; }
+  color: #ffffff; }
   .bar-stable .button:hover {
-    color: #444;
+    color: #ffffff;
     text-decoration: none; }
   .bar-stable .button.active, .bar-stable .button.activated {
     border-color: #a2a2a2;
@@ -4130,7 +4131,7 @@ a.subdued {
     border-color: transparent;
     background: none;
     box-shadow: none;
-    color: #444;
+    color: #ffffff;
     font-size: 17px; }
   .bar-stable .button.button-icon {
     border-color: transparent;
@@ -4359,7 +4360,7 @@ a.subdued {
   border-color: #b2b2b2;
   background-color: #007A3D;
   background-image: linear-gradient(0deg, #b2b2b2, #b2b2b2 50%, transparent 50%);
-  color: #444;
+  color: #ffffff;
   position: absolute;
   bottom: 0;
   z-index: 5;
@@ -4370,7 +4371,7 @@ a.subdued {
   background-size: 0;
   line-height: 55px; }
   .tabs .tab-item .badge {
-    background-color: #444;
+    background-color: #ffffff;
     color: #007A3D; }
   @media (min--moz-device-pixel-ratio: 1.5), (-webkit-min-device-pixel-ratio: 1.5), (min-device-pixel-ratio: 1.5), (min-resolution: 144dpi), (min-resolution: 1.5dppx) {
     .tabs {
@@ -4398,10 +4399,10 @@ a.subdued {
   border-color: #b2b2b2;
   background-color: #007A3D;
   background-image: linear-gradient(0deg, #b2b2b2, #b2b2b2 50%, transparent 50%);
-  color: #444; }
+  color: #ffffff; }
   .tabs-stable > .tabs .tab-item .badge,
   .tabs.tabs-stable .tab-item .badge {
-    background-color: #444;
+    background-color: #ffffff;
     color: #007A3D; }
 
 .tabs-positive > .tabs,
@@ -5121,7 +5122,8 @@ ion-tabs.tabs-striped.tabs-color-active-dark .tab-item.tab-item-active, ion-tabs
   font-weight: 400;
   font-size: 14px;
   font-family: "-apple-system", "Helvetica Neue", "Roboto", "Segoe UI", sans-serif;
-  opacity: 0.7; }
+  opacity: 1;
+  text-transform: uppercase; }
   .tab-item:hover {
     cursor: pointer; }
   .tab-item.tab-hidden {
@@ -5756,7 +5758,7 @@ ion-tabs.tabs-striped.tabs-color-active-dark .tab-item.tab-item-active, ion-tabs
   .item.item-stable {
     border-color: #b2b2b2;
     background-color: #007A3D;
-    color: #444; }
+    color: #ffffff; }
   .item.item-positive {
     border-color: #0c60ee;
     background-color: #387ef5;
@@ -6052,7 +6054,7 @@ a.item-content {
 .item-complex.item-stable > .item-content {
   border-color: #b2b2b2;
   background-color: #007A3D;
-  color: #444; }
+  color: #ffffff; }
   .item-complex.item-stable > .item-content.active, .item-complex.item-stable > .item-content:active {
     border-color: #a2a2a2;
     background-color: #e5e5e5; }
@@ -6737,7 +6739,7 @@ button.item.item-button-right {
 .tabs .tab-item .badge.badge-stable,
 .badge.badge-stable {
   background-color: #007A3D;
-  color: #444; }
+  color: #ffffff; }
 
 .tabs .tab-item .badge.badge-positive,
 .badge.badge-positive {
@@ -8518,7 +8520,7 @@ input:checked + .checkbox-icon:after {
     color: #444; }
   .item-select.item-stable select {
     background: #007A3D;
-    color: #444; }
+    color: #ffffff; }
   .item-select.item-stable:after, .item-select.item-stable .input-label {
     color: #666666; }
   .item-select.item-positive select {
@@ -8576,7 +8578,7 @@ progress {
 .button {
   border-color: transparent;
   background-color: #007A3D;
-  color: #444;
+  color: #ffffff;
   position: relative;
   display: inline-block;
   margin: 0;
@@ -8593,7 +8595,7 @@ progress {
   line-height: 42px;
   cursor: pointer; }
   .button:hover {
-    color: #444;
+    color: #ffffff;
     text-decoration: none; }
   .button.active, .button.activated {
     border-color: #a2a2a2;
@@ -8655,9 +8657,9 @@ progress {
   .button.button-stable {
     border-color: transparent;
     background-color: #007A3D;
-    color: #444; }
+    color: #ffffff; }
     .button.button-stable:hover {
-      color: #444;
+      color: #ffffff;
       text-decoration: none; }
     .button.button-stable.active, .button.button-stable.activated {
       border-color: #a2a2a2;

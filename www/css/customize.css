@@ -1,8 +1,32 @@
 ion-tabs.tabs-color-active-positive .tab-item {
-    color: white;
-    opacity: 1;
+    color: #FFFFFF;
 }
 
-ion-tabs.tabs-color-active-positive .tab-item.activated {
-	color:#FF9027;
+.tab-nav.tabs,
+ion-tabs.tabs-color-active-positive .tab-item {
+	background-color:#007A3D;
+}
+
+ion-tabs.tabs-color-active-positive .tab-item.tab-item-active
+, ion-tabs.tabs-color-active-positive .tab-item.active
+, ion-tabs.tabs-color-active-positive .tab-item.activated {
+    color:#FF9027;
+}
+
+ion-tabs.tabs-striped.tabs-color-active-positive .tab-item.tab-item-active
+, ion-tabs.tabs-striped.tabs-color-active-positive .tab-item.active
+, ion-tabs.tabs-striped.tabs-color-active-positive .tab-item.activated {
+	border-color: #01BE60;
+     color: #FF9027; 
+}
+
+ion-header-bar.bar-stable.bar.bar-header {
+	background-color: #FF9027;
+}
+
+
+
+/* Define */
+.home-content {
+	background-color:  #FF9027;
 }
