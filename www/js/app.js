@@ -10,7 +10,7 @@ psiApp.run(function($ionicPlatform, $rootScope, ProvincesService, MenuService) {
             cordova.plugins.Keyboard.disableScroll(true);
         }
         if (window.StatusBar) {
-            StatusBar.styleDefault();
+            StatusBar.hide();
         }
     });
 

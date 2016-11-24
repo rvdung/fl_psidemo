@@ -1,73 +1,75 @@
 <?xml version="1.0"?>
-
 <project default="installAll">
-
-	<target name="installAll" depends="install Cordova platforms, install Cordova plugins, install Javascript Plugins">
-	</target>
-
-	<target name="install Cordova platforms">
-		<echo>Install android platform</echo>
-		<ant antfile="./ant/subScripts/genericExec.xml" target="genericExec" inheritall="true">
-			<property name="command" value="ionic" />
-			<property name="args" value="platform add android" />
-		</ant>
-	</target>
-
-	<target name="install Cordova plugins">
-		<echo>Install cordova-plugin-device@1.1.2</echo>
-		<ant antfile="./ant/subScripts/genericExec.xml" target="genericExec" inheritall="true">
-			<property name="command" value="ionic" />
-			<property name="args" value="plugin add cordova-plugin-device@1.1.2" />
-		</ant>
-
-		<echo>Install cordova-plugin-compat@1.0.0</echo>
-		<ant antfile="./ant/subScripts/genericExec.xml" target="genericExec" inheritall="true">
-			<property name="command" value="ionic" />
-			<property name="args" value="plugin add cordova-plugin-compat@1.0.0" />
-		</ant>
-
-		<echo>Install cordova-plugin-dialogs@1.2.1</echo>
-		<ant antfile="./ant/subScripts/genericExec.xml" target="genericExec" inheritall="true">
-			<property name="command" value="ionic" />
-			<property name="args" value="plugin add cordova-plugin-dialogs@1.2.1" />
-		</ant>
-
-		<echo>Install cordova-plugin-geolocation@2.2.0</echo>
-		<ant antfile="./ant/subScripts/genericExec.xml" target="genericExec" inheritall="true">
-			<property name="command" value="ionic" />
-			<property name="args" value="plugin add cordova-plugin-geolocation@2.2.0" />
-		</ant>
-
-		<echo>Install cordova-plugin-vibration@2.1.1</echo>
-		<ant antfile="./ant/subScripts/genericExec.xml" target="genericExec" inheritall="true">
-			<property name="command" value="ionic" />
-			<property name="args" value="plugin add cordova-plugin-vibration@2.1.1" />
-		</ant>
-
-		<echo>Install cordova-plugin-whitelist@1.2.2</echo>
-		<ant antfile="./ant/subScripts/genericExec.xml" target="genericExec" inheritall="true">
-			<property name="command" value="ionic" />
-			<property name="args" value="plugin add cordova-plugin-whitelist@1.2.2" />
-		</ant>
-		
-		<echo>Install cordova-plugin-file-transfer</echo>
-		<ant antfile="./ant/subScripts/genericExec.xml" target="genericExec" inheritall="true">
-			<property name="command" value="ionic" />
-			<property name="args" value="plugin add cordova-plugin-file-transfer" />
-		</ant>
-		
-		<echo>Install cordova-plugin-calendar</echo>
-		<ant antfile="./ant/subScripts/genericExec.xml" target="genericExec" inheritall="true">
-			<property name="command" value="ionic" />
-			<property name="args" value="plugin add cordova-plugin-calendar" />
-		</ant>
-	</target>
-
-
-	<target name="install Javascript Plugins">
-		<echo>Install Javascript Plugins</echo>
-		<ant antfile="./ant/subScripts/genericExec.xml" target="genericExec" inheritall="true">
-			<property name="command" value="bower-installer" />
-		</ant>
-	</target>
+    <target name="installAll" depends="install Cordova platforms, install Cordova plugins, install Javascript Plugins">
+    </target>
+    <target name="install Cordova platforms">
+        <echo>Install android platform</echo>
+        <ant antfile="./ant/subScripts/genericExec.xml" target="genericExec" inheritall="true">
+            <property name="command" value="ionic" />
+            <property name="args" value="platform add android" />
+        </ant>
+    </target>
+    <target name="install Cordova plugins">
+        <echo>Install cordova-plugin-device@1.1.2</echo>
+        <ant antfile="./ant/subScripts/genericExec.xml" target="genericExec" inheritall="true">
+            <property name="command" value="ionic" />
+            <property name="args" value="plugin add cordova-plugin-device@1.1.2" />
+        </ant>
+        <echo>Install cordova-plugin-compat@1.0.0</echo>
+        <ant antfile="./ant/subScripts/genericExec.xml" target="genericExec" inheritall="true">
+            <property name="command" value="ionic" />
+            <property name="args" value="plugin add cordova-plugin-compat@1.0.0" />
+        </ant>
+        <echo>Install cordova-plugin-dialogs@1.2.1</echo>
+        <ant antfile="./ant/subScripts/genericExec.xml" target="genericExec" inheritall="true">
+            <property name="command" value="ionic" />
+            <property name="args" value="plugin add cordova-plugin-dialogs@1.2.1" />
+        </ant>
+        <echo>Install cordova-plugin-geolocation@2.2.0</echo>
+        <ant antfile="./ant/subScripts/genericExec.xml" target="genericExec" inheritall="true">
+            <property name="command" value="ionic" />
+            <property name="args" value="plugin add cordova-plugin-geolocation@2.2.0" />
+        </ant>
+        <echo>Install cordova-plugin-vibration@2.1.1</echo>
+        <ant antfile="./ant/subScripts/genericExec.xml" target="genericExec" inheritall="true">
+            <property name="command" value="ionic" />
+            <property name="args" value="plugin add cordova-plugin-vibration@2.1.1" />
+        </ant>
+        <echo>Install cordova-plugin-whitelist@1.2.2</echo>
+        <ant antfile="./ant/subScripts/genericExec.xml" target="genericExec" inheritall="true">
+            <property name="command" value="ionic" />
+            <property name="args" value="plugin add cordova-plugin-whitelist@1.2.2" />
+        </ant>
+        <echo>Install cordova-plugin-file-transfer</echo>
+        <ant antfile="./ant/subScripts/genericExec.xml" target="genericExec" inheritall="true">
+            <property name="command" value="ionic" />
+            <property name="args" value="plugin add cordova-plugin-file-transfer" />
+        </ant>
+        <echo>Install cordova-plugin-calendar</echo>
+        <ant antfile="./ant/subScripts/genericExec.xml" target="genericExec" inheritall="true">
+            <property name="command" value="ionic" />
+            <property name="args" value="plugin add cordova-plugin-calendar" />
+        </ant>
+        <echo>Install cordova-plugin-statusbar</echo>
+        <ant antfile="./ant/subScripts/genericExec.xml" target="genericExec" inheritall="true">
+            <property name="command" value="ionic" />
+            <property name="args" value="plugin add cordova-plugin-statusbar" />
+        </ant>
+        <echo>Install cordova-plugin-screen-orientation</echo>
+        <ant antfile="./ant/subScripts/genericExec.xml" target="genericExec" inheritall="true">
+            <property name="command" value="ionic" />
+            <property name="args" value="plugin add ordova-plugin-screen-orientation" />
+        </ant>
+        <echo>Install cordova-plugin-crosswalk-webview</echo>
+        <ant antfile="./ant/subScripts/genericExec.xml" target="genericExec" inheritall="true">
+            <property name="command" value="ionic" />
+            <property name="args" value="plugin add cordova-plugin-crosswalk-webview" />
+        </ant>
+    </target>
+    <target name="install Javascript Plugins">
+        <echo>Install Javascript Plugins</echo>
+        <ant antfile="./ant/subScripts/genericExec.xml" target="genericExec" inheritall="true">
+            <property name="command" value="bower-installer" />
+        </ant>
+    </target>
 </project>

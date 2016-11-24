@@ -81,7 +81,7 @@
                         if (isRotate) {
                             pageWidthScale = (clientRect.width / viewport.height) * 0.8;
                         } else {
-                            pageWidthScale = clientRect.height / viewport.height;
+                            pageWidthScale = clientRect.height / viewport.height * 0.9;
 
                         }
                     }
@@ -116,20 +116,26 @@
 
                 scope.goPrevious = function() {
                     clearCanvas();
-                    if (scope.pageToDisplay <= 1) {
-                        return;
+                    if (scope.pageToDisplay < 1) {
+                        console.log('previous < 1');
+
+                    } else {
+                        scope.pageToDisplay = parseInt(scope.pageToDisplay) - 1;
+                        scope.renderPage(scope.pageToDisplay);
+                        console.log('render');
                     }
-                    scope.pageToDisplay = parseInt(scope.pageToDisplay) - 1;
-                    scope.pageNum = scope.pageToDisplay;
                 };
 
                 scope.goNext = function() {
                     clearCanvas();
-                    if (scope.pageToDisplay >= pdfDoc.numPages) {
-                        return;
+                    if (scope.pageToDisplay > pdfDoc.numPages) {
+                        console.log('next > numpages');
+
+                    } else {
+                        scope.pageToDisplay = parseInt(scope.pageToDisplay) + 1;
+                        scope.renderPage(scope.pageToDisplay);
+                        console.log('render');
                     }
-                    scope.pageToDisplay = parseInt(scope.pageToDisplay) + 1;
-                    scope.pageNum = scope.pageToDisplay;
                 };
 
                 scope.changePage = function() {
@@ -200,12 +206,16 @@
                     scope.renderPage(scope.pageToDisplay);
                 });
 
-                scope.$watch('pageNum', function(newVal) {
-                    scope.pageToDisplay = parseInt(newVal);
-                    if (pdfDoc !== null) {
-                        scope.renderPage(scope.pageToDisplay);
-                    }
-                });
+                // scope.$watch('pageNum', function(newVal) {
+
+                //     scope.pageToDisplay = parseInt(newVal);
+                //     if (pdfDoc !== null) {
+                //         scope.renderPage(scope.pageToDisplay);
+                //     }
+
+                // });
+
+
 
                 scope.$watch('pdfUrl', function(newVal) {
                     if (newVal !== '') {
