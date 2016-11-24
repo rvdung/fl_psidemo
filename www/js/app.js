@@ -1,7 +1,7 @@
 var psiApp = angular.module('psiApp', [ 'ionic', 'pdf', 'ngCordova',
 		'$actionButton', 'ionic-material', 'ionMdInput' ]);
 
-psiApp.run(function($ionicPlatform, $rootScope, ProvincesService) {
+psiApp.run(function($ionicPlatform, $rootScope, ProvincesService, MenuService) {
 	$ionicPlatform.ready(function() {
 
 		if (window.cordova && window.cordova.plugins
@@ -15,7 +15,17 @@ psiApp.run(function($ionicPlatform, $rootScope, ProvincesService) {
 	});
 
 	ProvincesService.getAll(function(response){
-		$rootScope.provinces = response;
+		if(response!=undefined){
+			$rootScope.provinces = response;
+			$rootScope.province = response[0];
+		}
+		if($rootScope.province != undefined){
+			MenuService.getMenuItemsByProvince($rootScope.province.proviceCode, function(menuResponse){
+				if(menuResponse!= undefined){
+					$rootScope.menu = menuResponse;
+				}
+			});
+		}
 	});
 });
 
@@ -75,20 +85,10 @@ psiApp
 				}
 			})
 
-			.state('tab.account', {
-				url : '/account',
-				views : {
-					'tab-account' : {
-						templateUrl : 'templates/tab-account.html',
-						controller : 'AccountCtrl'
-					}
-				}
-			})
-
 			.state('tab.pdfviewer', {
 				url : '/pdfviewer',
 				views : {
-					'tab-pdf-viewer-test' : {
+					'tab-home' : {
 						templateUrl : 'templates/tab-pdf-viewer-test.html',
 						controller : 'PDFCtrl'
 					}
@@ -97,5 +97,4 @@ psiApp
 
 			// if none of the above states are matched, use this as the fallback
 			$urlRouterProvider.otherwise('/tab/home');
-
 		});
