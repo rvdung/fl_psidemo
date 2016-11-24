@@ -1,0 +1,15 @@
+<ion-pane>
+  <ion-header-bar class="bar-balanced">
+    <div class="buttons">
+      <button class="button button-dark" ui-sref="tab.trackers">Quay lại</button>
+    </div>
+    <h1 class="title">{{trackerInfo.name}}</h1>
+  </ion-header-bar>
+  <ion-content>
+    <p class="item item-divider">
+    	{{trackerInfo.ngaytao}}
+    </p>
+		<input type="text" ng-model="trackerInfo.value">
+   		<button class="button button-block button-energized" ng-click="updateEntry()">Lưu</button>
+  </ion-content>
+</ion-pane>

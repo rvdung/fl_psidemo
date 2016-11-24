@@ -1,0 +1,36 @@
+<ion-pane>
+  <ion-header-bar class="bar-positive">
+    <h1 class="title">Ghi chú</h1>
+    <div class="buttons">
+    <button class="button button-dark" ng-click="toggleEdit()">{{editButtonLabel}}</button>
+  </div>
+  </ion-header-bar>
+  <ion-content>
+
+  <ion-list>
+    <ion-item class="item item-divider">
+      Thêm ghi chú
+    </ion-item>
+    <ion-item>
+    <input type="text" placeholder="Điền tên ghi chú" ng-model="newTracker.name">
+    </ion-item>
+    <ion-item>
+      <button class="button button-block button-calm" ng-click="addNewTracker()">Thêm</button>
+    </ion-item>
+   </ion-list>
+
+   <ion-list show-delete="shouldShowDelete">
+   <ion-item class="item item-divider">
+    	Danh sách ghi chú
+    </ion-item>
+    <ion-item ng-show="loadingTrackers">
+     	<ion-spinner icon="spiral"></ion-spinner>
+    </ion-item>
+    <ion-item ui-sref="tab.tracker-detail({id:tracker.id})" class="item-icon-right" ng-repeat="tracker in trackersList track by $index">
+    	{{tracker.name}}
+    	<ion-delete-button class="ion-minus-circled" ng-click="deleteTracker($index,tracker.id)"></ion-delete-button>
+    	<i class="icon ion-chevron-right"></i>
+    </ion-item>
+   </ion-list>
+  </ion-content>
+</ion-pane>

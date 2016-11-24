@@ -1,7 +1,7 @@
 var psiApp = angular.module(
 		'psiApp',
 		[ 'ionic',  'pdf',
-				'ngCordova' ,'$actionButton'])
+				'ngCordova' ,'TrackersList','TrackerDetails','$actionButton'])
 
 .run(
 		function($ionicPlatform) {
@@ -82,6 +82,26 @@ var psiApp = angular.module(
 			}
 		}
 	})
+	
+	 .state('tab.trackers', {
+		url: '/trackers',
+		views : {
+			'tab-trackers' : {
+				controller:'TrackersListCtrl',
+				templateUrl: 'templates/tracker-list.html'
+				}
+			}
+  })
+
+  .state('tab.tracker-detail', {
+		url: '/trackers/:id',
+		views : {
+			'tab-trackers' : {
+				controller:'TrackerDetailsCtrl',
+				templateUrl: 'templates/tracker-detail.html'
+				}
+			}
+  })
 
 	
 
