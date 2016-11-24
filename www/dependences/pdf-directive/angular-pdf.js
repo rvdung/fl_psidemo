@@ -4,8 +4,7 @@
     'use strict';
 
     angular.module('pdf', []).directive('ngPdf', ['$window', function($window) {
-        var renderTaskPortrait = null;
-        var renderTaskLandscape = null;
+        var renderTask = null;
         var pdfLoaderTask = null;
         var debug = false;
 
@@ -17,7 +16,7 @@
                 ctx.msBackingStorePixelRatio ||
                 ctx.oBackingStorePixelRatio ||
                 ctx.backingStorePixelRatio || 1;
-
+            console.log(dpr);
             return dpr / bsr;
         };
 
@@ -44,98 +43,79 @@
                 var pageToDisplay = isFinite(attrs.page) ? parseInt(attrs.page) : 1;
                 var pageFit = attrs.scale === 'page-fit';
                 var scale = attrs.scale > 0 ? attrs.scale : 1;
+                var isRotate = false;
 
                 //always have two canvas, first one always portrait, second one always landscape
-                var canvasPortrait = element.find('canvas')[0];
-                var canvasLandscape = element.find('canvas')[1];
+                var canvas = element.find('canvas')[0];
+                setClassForCanvas(canvas);
                 debug = attrs.hasOwnProperty('debug') ? attrs.debug : false;
                 var creds = attrs.usecredentials;
-                var ctxPortrait = canvasPortrait.getContext('2d');
-                ctxPortrait.textAlign = 'center';
-                var ctxLandscape = canvasLandscape.getContext('2d');
-                ctxLandscape.textAlign = 'center';
-                PDFJS.disableWorker = true;
+                var ctx = canvas.getContext('2d');
+
+                PDFJS.disbleWorker = true;
                 scope.pageNum = pageToDisplay;
 
                 scope.renderPage = function(num) {
-                    console.log('check cancel');
-                    if (renderTaskPortrait) {
-                        renderTaskPortrait = null;
+                    pdfDoc.getPage(num).then(renderPageNum);
+                }
+
+                function renderPageNum(page) {
+                    if (renderTask) {
+                        renderTask._internalRenderTask.cancel();
                     }
-                    if (renderTaskLandscape) {
-                        renderTaskLandscape = null;
+                    var clientRect = element[0].getBoundingClientRect();
+                    var viewport = page.getViewport(1);
+
+                    var pageWidthScale;
+                    console.log(clientRect.width + " x " + clientRect.height);
+                    console.log(viewport.width + " x " + viewport.height);
+                    if (canvas.getAttribute('class') == 'portrait') {
+                        console.log('portrait');
+                        if (isRotate) {
+                            pageWidthScale = (clientRect.height / viewport.width) * 1.1;
+                        } else {
+                            pageWidthScale = clientRect.width / viewport.width;
+                        }
+                    } else {
+                        console.log('landscape');
+                        if (isRotate) {
+                            pageWidthScale = (clientRect.width / viewport.height) * 0.8;
+                        } else {
+                            pageWidthScale = clientRect.height / viewport.height;
+
+                        }
                     }
-                    console.log('end check cancel');
-                    pdfDoc.getPage(num).then(function(page) {
+                    viewport = page.getViewport(pageWidthScale);
+                    console.log(pageWidthScale);
+                    setCanvasDimensions(canvas, viewport.width, viewport.height);
 
-                        //find a way to create 2 page with width and height fit to screen or fixed width and height (720x1280)
-                        var clientRect = element[0].getBoundingClientRect();
-                        var viewport = page.getViewport(1);
-                        //portrait
-                        var pageWidthScalePortrait;
-                        if (clientRect.width < clientRect.height) {
-                            pageWidthScalePortrait = clientRect.width / viewport.width;
-                        } else {
-                            pageWidthScalePortrait = clientRect.height / viewport.width;
+
+                    var renderContext = {
+                        canvasContext: ctx,
+                        viewport: viewport
+                    };
+                    renderTask = page.render(renderContext);
+                    renderTask.promise.then(function() {
+                        if (typeof scope.onPageRender === 'function') {
+                            scope.onPageRender();
                         }
-                        var viewportPortrait = page.getViewport(pageWidthScalePortrait);
-                        setCanvasDimensions(canvasPortrait, viewportPortrait.width, viewportPortrait.height);
-                        viewportPortrait.width = viewportPortrait.width * 3;
-                        viewportPortrait.height = viewportPortrait.height * 3;
-                        console.log(viewportPortrait.height);
-                        var renderContextPortrait = {
-                            canvasContext: ctxPortrait,
-                            viewport: viewportPortrait
-                        };
-                        renderTaskPortrait = page.render(renderContextPortrait);
-                        renderTaskPortrait.promise.then(function() {
-                            if (typeof scope.onPageRender === 'function') {
-                                scope.onPageRender();
-                            }
-                        }).catch(function(reason) {
-                            console.log(reason);
-                        });
-
-                        //Landscape
-                        var pageWidthScaleLandscape;
-                        if (clientRect.height > clientRect.width) {
-                            pageWidthScaleLandscape = clientRect.width / viewport.height;
-                        } else {
-                            pageWidthScaleLandscape = clientRect.height / viewport.height;
-                        }
-                        var viewportLandscape = page.getViewport(pageWidthScaleLandscape);
-                        console.log(viewportLandscape.width + "x" + viewportLandscape.height);
-                        setCanvasDimensions(canvasLandscape, viewportLandscape.width, viewportLandscape.height);
-                        var renderContextLandscape = {
-                            canvasContext: ctxLandscape,
-                            viewport: viewportLandscape
-                        };
-                        renderTaskLandscape = page.render(renderContextLandscape);
-                        renderTaskLandscape.promise.then(function() {
-                            if (typeof scope.onPageRender === 'function') {
-                                scope.onPageRender();
-                            }
-                        }).catch(function(reason) {
-                            console.log(reason);
-                        });
-
-
-                        setClassForCanvas(canvasPortrait, canvasLandscape);
+                    }).catch(function(reason) {
+                        console.log(reason);
                     });
-                };
 
-                function setClassForCanvas(canvasPortrait, canvasLandscape) {
+                }
+
+                function setClassForCanvas(canvas) {
                     console.log(window.orientation);
                     if (window.orientation == 0 || window.orientation == 180) {
-                        canvasPortrait.setAttribute('class', 'displayPDF');
-                        canvasLandscape.setAttribute('class', 'hiddenPDF');
+                        canvas.setAttribute('class', 'portrait');
                     } else {
-                        canvasLandscape.setAttribute('class', 'displayPDF');
-                        canvasPortrait.setAttribute('class', 'hiddenPDF');
+                        canvas.setAttribute('class', 'landscape');
                     }
                 }
 
                 scope.goPrevious = function() {
+                    clearCanvas();
                     if (scope.pageToDisplay <= 1) {
                         return;
                     }
@@ -144,6 +124,7 @@
                 };
 
                 scope.goNext = function() {
+                    clearCanvas();
                     if (scope.pageToDisplay >= pdfDoc.numPages) {
                         return;
                     }
@@ -168,12 +149,10 @@
                 };
 
                 function clearCanvas() {
-                    if (ctxPortrait) {
-                        ctxPortrait.clearRect(0, 0, canvasPortrait.width, canvasPortrait.height);
+                    if (ctx) {
+                        ctx.clearRect(0, 0, canvas.width, canvas.height);
                     }
-                    if (ctxLandscape) {
-                        ctxLandscape.clearRect(0, 0, canvasLandscape.width, canvasLandscape.height);
-                    }
+                    isRotate = false;
                 }
 
                 function renderPDF() {
@@ -195,7 +174,7 @@
                                 if (typeof scope.onLoad === 'function') {
                                     scope.onLoad();
                                 }
-                                console.log('after load');
+
                                 pdfDoc = _pdfDoc;
                                 scope.renderPage(scope.pageToDisplay);
 
@@ -213,6 +192,13 @@
                         );
                     }
                 }
+
+                angular.element($window).bind('orientationchange', function() {
+                    setClassForCanvas(canvas);
+                    clearCanvas();
+                    isRotate = true;
+                    scope.renderPage(scope.pageToDisplay);
+                });
 
                 scope.$watch('pageNum', function(newVal) {
                     scope.pageToDisplay = parseInt(newVal);
@@ -237,6 +223,8 @@
                         }
                     }
                 });
+
+
 
             }
         };
