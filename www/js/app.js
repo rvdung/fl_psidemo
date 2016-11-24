@@ -4,7 +4,6 @@ var psiApp = angular.module('psiApp', ['ionic', 'pdf', 'ngCordova',
 
 psiApp.run(function($ionicPlatform, $rootScope, ProvincesService, MenuService) {
     $ionicPlatform.ready(function() {
-
         if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
             cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
             cordova.plugins.Keyboard.disableScroll(true);
@@ -13,6 +12,7 @@ psiApp.run(function($ionicPlatform, $rootScope, ProvincesService, MenuService) {
             StatusBar.hide();
         }
     });
+
 
     ProvincesService.getAll(function(response) {
         if (response != undefined) {
@@ -55,6 +55,16 @@ psiApp
             }
         })
 
+        .state('tab.pdfviewer', {
+            url: '/home/pdfviewer/:menuCode',
+            views: {
+                'tab-home': {
+                    templateUrl: 'templates/tab-pdf-viewer.html',
+                    controller: 'PDFCtrl'
+                }
+            }
+        })
+
         .state('tab.chats', {
             url: '/chats',
             views: {
@@ -83,17 +93,8 @@ psiApp
                     controller: 'CalendarCtrl'
                 }
             }
-        })
-
-        .state('tab.pdfviewer', {
-            url: '/pdfviewer',
-            views: {
-                'tab-home': {
-                    templateUrl: 'templates/tab-pdf-viewer.html',
-                    controller: 'PDFCtrl'
-                }
-            }
         });
+
 
         // if none of the above states are matched, use this as the fallback
         $urlRouterProvider.otherwise('/tab/home');

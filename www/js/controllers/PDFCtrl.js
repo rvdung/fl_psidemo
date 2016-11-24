@@ -1,10 +1,12 @@
-psiApp
-    .controller(
-        'PDFCtrl',
-        function($scope, pageService) {
+psiApp.controller('PDFCtrl', function($scope, $stateParams, pageService,
+		MenuService) {
 
-            $scope.pdfName = 'Relativity: The Special and General Theory by Albert Einstein';
-            $scope.pdfUrl = 'resources/Dak Nong- Nha vs tham doi.pdf';
+			MenuService.getMenuItemsByCode($stateParams.menuCode, function(menuItem) {
+				if (menuItem != null) {
+					$scope.pdfName = menuItem.label;
+					$scope.pdfUrl = menuItem.resource;
+				}
+			});
             $scope.scroll = 0;
             $scope.loading = 'loading';
             var httpHeaders = $scope.httpHeaders;
