@@ -1,5 +1,5 @@
 var psiApp = angular.module('psiApp', ['ionic', 'pdf', 'ngCordova',
-    '$actionButton', 'ionic-material', 'ionMdInput' ,'TrackersList','TrackerDetails'])
+    '$actionButton', 'ionic-material', 'ionMdInput' ,'TrackersList','TrackerDetails']);
 
 psiApp.run(function($ionicPlatform, $rootScope, ProvincesService, MenuService) {
 			$ionicPlatform.ready(function() {
@@ -93,13 +93,6 @@ psiApp
 				}
 			}
   })
-
-        .state('tab.calendar', {
-            url: '/calendar',
-            views: {
-                'tab-calendar': {
-                    templateUrl: 'templates/tab-calendar.html',
-                    controller: 'CalendarCtrl'
   .state('tab.tracker-detail', {
 		url: '/trackers/:id',
 		views : {
@@ -109,6 +102,12 @@ psiApp
 				}
 			}
   })
+        .state('tab.calendar', {
+            url: '/calendar',
+            views: {
+                'tab-calendar': {
+                    templateUrl: 'templates/tab-calendar.html',
+                    controller: 'CalendarCtrl'
 			}
 		}
 	});
