@@ -1,0 +1,14 @@
+<ion-view hide-nav-bar="true"> 
+	<ion-content class="home-content padding">
+	<div class="home-logo" style="margin: auto; text-align: center;">
+		<img src="resources/img/TOT-5.png">
+	</div>
+		<ul class="list">
+		    <li class="item" ng-repeat="menuItem in menu">
+		    <button class="button button-clear button-positive" ng-click="getMenuAction(menuItem)">
+			  {{::menuItem.label}}
+			</button>
+		    </li>
+		</ul>
+	</ion-content> 
+</ion-view>

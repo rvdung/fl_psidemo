@@ -3,20 +3,12 @@
 <!-- deal with scroll bar -->
 <!-- re-position buttons -->
 <!-- <div ng-controller='viewPDFCtrl' style="height: 100%; width: 100%;"> -->
-	
-	<ion-content scroll="false" style="max-width: 100%; max-width: 100%;" ng-controller='viewPDFCtrl'>
-		<canvas ionic-canvas style="position: absolute;top:0;bottom: 0;left: 0;right: 0;margin:auto;"></canvas>
-	</ion-content>
-	<!-- <div class="row nav_btn_div">
-		<button
-			class="nav_btn button icon-left ion-chevron-left button-clear button-dark"
-			ng-click="goPrevious()"></button>
-		<div style="width: 80%;"></div>
-		<button
-			class="nav_btn button icon-right ion-chevron-right button-clear button-dark"
-			ng-click="goNext()"></button>
-	</div> -->
-	
-		
-			<!-- <div class="page_number_div">{{pageNum}}/{{pageCount}}</div -->
-	
+<ion-content scroll="false" style="max-width: 100%; max-width: 100%;" ng-controller='viewPDFCtrl'>
+    <canvas ionic-canvas></canvas>
+</ion-content>
+<div class="row nav_btn_div">
+    <button class="nav_btn button button-clear  ion-chevron-left  button-dark no-padding-left" ng-click="goPrevious()"> </button>
+    <div style="width: 68%;"></div>
+    <button class="nav_btn button button-clear ion-chevron-right button-dark no-padding-right" ng-click="goNext()"> </button>
+</div>
+<!-- <div class="page_number_div">{{pageNum}}/{{pageCount}}</div -->

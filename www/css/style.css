@@ -1,43 +1,106 @@
 /* PDF viewer */
+
 .nav_btn_div {
-	position: absolute;
-	bottom: 45%;
-	width: 100%;
+    position: absolute;
+    bottom: 45%;
+    width: 100%;
 }
 
 .nav_btn {
-	width: 10%;
+    font-size: 50px;
+    opacity: 0.3;
 }
 
 .page_number_div {
-	position: absolute;
-	bottom: 10%;
-	width: 100%;
+    position: absolute;
+    bottom: 10%;
+    width: 100%;
 }
 
 .page_number_span {
-	margin: 0 auto;
-	width: 20%;
+    margin: 0 auto;
+    width: 20%;
 }
 
 .ng_pdf {
-	width: 100%;
-	height: 100%;
+    width: 100%;
+    height: 100%;
 }
 
 .scroll {
-	height: 100% !important
+    height: 100% !important
 }
 
-.pdf_page {
-	
+.portrait {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 100%;
+    height: 100%;
 }
 
-*{box-sizing: border-box;}
-.wrapper {margin: 0 auto; width: 960px; }
-.pdf-controls { width: 100%; display: block; background: #eee; padding: 1em;}
-.rotate0 {-webkit-transform: rotate(0deg); transform: rotate(0deg); }
-.rotate90 {-webkit-transform: rotate(90deg); transform: rotate(90deg); }
-.rotate180 {-webkit-transform: rotate(180deg); transform: rotate(180deg); }
-.rotate270 {-webkit-transform: rotate(270deg); transform: rotate(270deg); }
-.fixed { position: fixed; top: 0; left: calc(50% - 480px); z-index: 100; width: 100%; padding: 1em; background: rgba(238, 238, 238,.9); width: 960px; }
+.landscape {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 100%;
+    height: 100%;
+}
+
+.hiddenPDF {
+    display: none;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.wrapper {
+    margin: 0 auto;
+    width: 960px;
+}
+
+.pdf-controls {
+    width: 100%;
+    display: block;
+    background: #eee;
+    padding: 1em;
+}
+
+.rotate0 {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+}
+
+.rotate90 {
+    -webkit-transform: rotate(90deg);
+    transform: rotate(90deg);
+}
+
+.rotate180 {
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg);
+}
+
+.rotate270 {
+    -webkit-transform: rotate(270deg);
+    transform: rotate(270deg);
+}
+
+.fixed {
+    /*position: fixed;
+top: 0;
+left: calc(50% - 480px);
+z-index: 100;
+width: 100%;
+padding: 1em;
+background: rgba(238, 238, 238, .9);
+width: 960px;
+*/
+}
