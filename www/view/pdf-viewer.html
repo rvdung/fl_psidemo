@@ -3,34 +3,14 @@
 <!-- deal with scroll bar -->
 <!-- re-position buttons -->
 <!-- <div ng-controller='viewPDFCtrl' style="height: 100%; width: 100%;"> -->
-<ion-content scroll="false" style="max-width: 100%; max-width: 100%;" ng-controller='viewPDFCtrl'>
+<ion-content scroll="false" ng-controller='viewPDFCtrl'>
     <!-- This is portrait canvas-->
-    <canvas ionic-canvas id="portrait_id"></canvas>
+    <canvas ionic-canvas></canvas>
     <!-- This is Landscape canvas -->
-    <canvas ionic-canvas id="landscape_id">
-    </canvas>
 </ion-content>
-<!-- <div class="row nav_btn_div">
-		<button
-			class="nav_btn button icon-left ion-chevron-left button-clear button-dark"
-			ng-click="goPrevious()"></button>
-		<div style="width: 80%;"></div>
-		<button
-			class="nav_btn button icon-right ion-chevron-right button-clear button-dark"
-			ng-click="goNext()"></button>
-	</div> -->
+<div class="row nav_btn_div">
+    <button class="nav_btn button icon-left ion-chevron-left button-clear button-dark" ng-click="goPrevious()"></button>
+    <div style="width: 80%;"></div>
+    <button class="nav_btn button icon-right ion-chevron-right button-clear button-dark" ng-click="goNext()"></button>
+</div>
 <!-- <div class="page_number_div">{{pageNum}}/{{pageCount}}</div -->
-<script>
-window.addEventListener("orientationchange", function() {
-            alert("change");
-            var portrait_canvas = document.getElementById('portrait_id');
-            var landscape_canvas = document.getElementById('landscape_id');
-            if (portrait_canvas.getAttribute('class') === 'displayPDF') {
-                portrait_canvas.setAttribute('class', 'hiddenPDF');
-                landscape_canvas.setAttribute('class', 'displayPDF');
-            } else {
-                landscape_canvas.setAttribute('class', 'hiddenPDF');
-                portrait_canvas.setAttribute('class', 'displayPDF');
-
-            }
-</script>

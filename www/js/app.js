@@ -1,100 +1,100 @@
-var psiApp = angular.module('psiApp', [ 'ionic', 'pdf', 'ngCordova',
-		'$actionButton', 'ionic-material', 'ionMdInput' ]);
+var psiApp = angular.module('psiApp', ['ionic', 'pdf', 'ngCordova',
+    '$actionButton', 'ionic-material', 'ionMdInput'
+]);
 
 psiApp.run(function($ionicPlatform, $rootScope, ProvincesService, MenuService) {
-	$ionicPlatform.ready(function() {
+    $ionicPlatform.ready(function() {
 
-		if (window.cordova && window.cordova.plugins
-				&& window.cordova.plugins.Keyboard) {
-			cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
-			cordova.plugins.Keyboard.disableScroll(true);
-		}
-		if (window.StatusBar) {
-			StatusBar.styleDefault();
-		}
-	});
+        if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
+            cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+            cordova.plugins.Keyboard.disableScroll(true);
+        }
+        if (window.StatusBar) {
+            StatusBar.styleDefault();
+        }
+    });
 
-	ProvincesService.getAll(function(response){
-		if(response!=undefined){
-			$rootScope.provinces = response;
-			$rootScope.province = response[0];
-		}
-		if($rootScope.province != undefined){
-			MenuService.getMenuItemsByProvince($rootScope.province.proviceCode, function(menuResponse){
-				if(menuResponse!= undefined){
-					$rootScope.menu = menuResponse;
-				}
-			});
-		}
-	});
+    ProvincesService.getAll(function(response) {
+        if (response != undefined) {
+            $rootScope.provinces = response;
+            $rootScope.province = response[0];
+        }
+        if ($rootScope.province != undefined) {
+            MenuService.getMenuItemsByProvince($rootScope.province.proviceCode, function(menuResponse) {
+                if (menuResponse != undefined) {
+                    $rootScope.menu = menuResponse;
+                }
+            });
+        }
+    });
 });
 
 psiApp
-		.config(function($stateProvider, $urlRouterProvider,
-				$ionicConfigProvider) {
+    .config(function($stateProvider, $urlRouterProvider,
+        $ionicConfigProvider) {
 
-			$ionicConfigProvider.tabs.position('bottom');
-			$stateProvider
+        $ionicConfigProvider.tabs.position('bottom');
+        $stateProvider
 
-			// setup an abstract state for the tabs directive
-			.state('tab', {
-				url : '/tab',
-				abstract : true,
-				templateUrl : 'templates/tabs.html'
-			})
+        // setup an abstract state for the tabs directive
+            .state('tab', {
+            url: '/tab',
+            abstract: true,
+            templateUrl: 'templates/tabs.html'
+        })
 
-			// Each tab has its own nav history stack:
+        // Each tab has its own nav history stack:
 
-			.state('tab.home', {
-				url : '/home',
-				views : {
-					'tab-home' : {
-						templateUrl : 'templates/tab-home.html',
-						controller : 'HomeCtrl'
-					}
-				}
-			})
+        .state('tab.home', {
+            url: '/home',
+            views: {
+                'tab-home': {
+                    templateUrl: 'templates/tab-home.html',
+                    controller: 'HomeCtrl'
+                }
+            }
+        })
 
-			.state('tab.chats', {
-				url : '/chats',
-				views : {
-					'tab-chats' : {
-						templateUrl : 'templates/tab-chats.html',
-						controller : 'ChatsCtrl'
-					}
-				}
-			})
+        .state('tab.chats', {
+            url: '/chats',
+            views: {
+                'tab-chats': {
+                    templateUrl: 'templates/tab-chats.html',
+                    controller: 'ChatsCtrl'
+                }
+            }
+        })
 
-			.state('tab.chat-detail', {
-				url : '/chats/:chatId',
-				views : {
-					'tab-chats' : {
-						templateUrl : 'templates/chat-detail.html',
-						controller : 'ChatDetailCtrl'
-					}
-				}
-			})
+        .state('tab.chat-detail', {
+            url: '/chats/:chatId',
+            views: {
+                'tab-chats': {
+                    templateUrl: 'templates/chat-detail.html',
+                    controller: 'ChatDetailCtrl'
+                }
+            }
+        })
 
-			.state('tab.calendar', {
-				url : '/calendar',
-				views : {
-					'tab-calendar' : {
-						templateUrl : 'templates/tab-calendar.html',
-						controller : 'CalendarCtrl'
-					}
-				}
-			})
+        .state('tab.calendar', {
+            url: '/calendar',
+            views: {
+                'tab-calendar': {
+                    templateUrl: 'templates/tab-calendar.html',
+                    controller: 'CalendarCtrl'
+                }
+            }
+        })
 
-			.state('tab.pdfviewer', {
-				url : '/pdfviewer',
-				views : {
-					'tab-home' : {
-						templateUrl : 'templates/tab-pdf-viewer-test.html',
-						controller : 'PDFCtrl'
-					}
-				}
-			});
+        .state('tab.pdfviewer', {
+            url: '/pdfviewer',
+            views: {
+                'tab-home': {
+                    templateUrl: 'templates/tab-pdf-viewer.html',
+                    controller: 'PDFCtrl'
+                }
+            }
+        });
 
-			// if none of the above states are matched, use this as the fallback
-			$urlRouterProvider.otherwise('/tab/home');
-		});
+        // if none of the above states are matched, use this as the fallback
+        $urlRouterProvider.otherwise('/tab/home');
+    });
