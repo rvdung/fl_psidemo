@@ -11,10 +11,12 @@ psiApp.controller('HomeCtrl', function($scope, $rootScope, $state) {
 	}
 	
 	$scope.getMenuAction = function(menuItem) {
-		if(menuItem.type = 's'){
+		if(menuItem.type == 's'){
+			$state.go('tab.pdfviewer', {menuCode:menuItem.code});
+		} else 	if(menuItem.type == 'v'){
 			$state.go('tab.pdfviewer', {menuCode:menuItem.code});
 		} else {
-			$state.go('tab.pdfviewer');
+			$state.go('tab.home');
 		}
 	}
 
