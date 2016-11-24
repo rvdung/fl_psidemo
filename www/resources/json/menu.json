@@ -1,5 +1,5 @@
 [{
-	"proviceCode": "001",
+	"provinceCode": "001",
 	"contents": [{
 		"code": "001",
 		"label": "Các vấn đề vệ sinh nói chung",
@@ -22,7 +22,7 @@
 		"resource": "/resources/Tien Giang- Nha ve sinh ROTO FAQ.pdf"
 	}]
 }, {
-	"proviceCode": "002",
+	"provinceCode": "002",
 	"contents": [{
 		"code": "001",
 		"label": "Các vấn đề vệ sinh nói chung",

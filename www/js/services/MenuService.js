@@ -1,24 +1,29 @@
 psiApp.factory('MenuService', function($http) {
 
-	var menuItems = null;
 	var service = {};
-
 	service.getAll = getAll;
 	service.getMenuItemsByProvince = getMenuItemsByProvince;
-	
 
-	$http.get('resources/json/menu.json').success(function(response) {
-		menuItems = response;
-	});
+	function getAll(callback) {
+		$http.get('resources/json/menu.json').success(function(response) {
+			callback(response);
+		});
+	}
 
-	var getAll = function() {
-		return menuItems;
-	};
-	
-	var getMenuItemsByProvince = function(provinceCode) {
-		return menuItems;
-		//TODO: Implement
-	};
+	function getMenuItemsByProvince(provinceCode, callback) {
+		$http.get('resources/json/menu.json').success(function(response) {
+			if(response!= undefined){
+				var i;
+				
+				for(i = 0 ; i < response.length ; i++){
+					if(provinceCode == response[i].provinceCode){
+						console.log('response[i].contents' + angular.toJson(response[i].contents));
+						callback(response[i].contents);
+					}
+				}
+			}
+		});
+	}
 
 	return service;
 });

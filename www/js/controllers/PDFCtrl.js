@@ -4,7 +4,7 @@ psiApp
         function($scope, pageService) {
 
             $scope.pdfName = 'Relativity: The Special and General Theory by Albert Einstein';
-            $scope.pdfUrl = 'pdf/relativity.pdf';
+            $scope.pdfUrl = 'resources/Dak Nong- Nha vs tham doi.pdf';
             $scope.scroll = 0;
             $scope.loading = 'loading';
             var httpHeaders = $scope.httpHeaders;

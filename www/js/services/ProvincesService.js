@@ -1,13 +1,15 @@
 psiApp.factory('ProvincesService', function($http) {
 
-	var getAll = function() {
+	var service = {};
+	service.getAll = getAll;
+	
+	
+	function getAll(callback) {
 		$http.get('resources/json/provinces.json').success(function(response) {
-			console.log('response' + ': ' + response);
-			return response;
+			callback(response);
 		});
 	};
+	
+	return service;
 
-	return {
-		getAll : getAll
-	};
 });
