@@ -42,6 +42,14 @@
     height: 100%;
 }
 
+.divPortrait {
+    width: 68%;
+}
+
+.divLandscape {
+    width: 80%;
+}
+
 .landscape {
     position: absolute;
     top: 0;
