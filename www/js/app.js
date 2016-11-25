@@ -55,7 +55,8 @@ psiApp
 	})
 
         .state('tab.pdfviewer', {
-            url: '/home/pdfviewer/:menuCode',
+           cache:false,
+        	url: '/home/pdfviewer/:menuCode',
             views: {
                 'tab-home': {
                     templateUrl: 'templates/tab-pdf-viewer.html',
