@@ -10,7 +10,7 @@ trackersListModule.controller('TrackersListCtrl',['$scope','$cordovaSQLite','$io
 	 $actionButton.create({
 		mainAction : {
 			icon : 'ion-android-create',
-			backgroundColor : 'blue',
+			backgroundColor : 'green',
 			textColor : ' white',
 			onClick : function() {
 				console.log('clicked main BUTTON');
@@ -19,7 +19,7 @@ trackersListModule.controller('TrackersListCtrl',['$scope','$cordovaSQLite','$io
 		buttons : [ {
 			icon : 'ion-android-calendar',
 			label : 'Xem lịch',
-			backgroundColor : 'red',
+			backgroundColor : 'orange',
 			iconColor : 'white',
 			onClick : function() {
 				console.log('clicked calendar');
@@ -53,7 +53,7 @@ trackersListModule.controller('TrackersListCtrl',['$scope','$cordovaSQLite','$io
 
 		function toggleEdit() {
 			$scope.shouldShowDelete = !$scope.shouldShowDelete;
-			$scope.editButtonLabel = $scope.shouldShowDelete ? "Xong" : $scope.editButtonLabel;
+			$scope.editButtonLabel = $scope.shouldShowDelete ? "Xong" : "Xóa";
 		}
 
 		function addNewTracker()
