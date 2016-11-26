@@ -1,3 +1,3 @@
-psiApp.controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
-	$scope.chat = Chats.get($stateParams.chatId);
+psiApp.controller('ChatDetailCtrl', function($scope, $stateParams, FreeNotes) {
+	$scope.chat = FreeNotes.get($stateParams.ngaytao);
 });
