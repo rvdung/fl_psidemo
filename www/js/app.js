@@ -65,26 +65,16 @@ psiApp
 		}
 	})
 
-        .state('tab.chats', {
-            url: '/chats',
+        .state('tab.masons', {
+            url: '/masons',
             views: {
-                'tab-chats': {
-                    templateUrl: 'templates/tab-chats.html',
-                    controller: 'ChatsCtrl'
+                'tab-masons': {
+                    templateUrl: 'templates/tab-masons.html',
+                    controller: 'MasonCtrl'
 			}
 		}
 	})
 
-        .state('tab.chat-detail', {
-            url: '/chats/:chatId',
-            views: {
-                'tab-chats': {
-                    templateUrl: 'templates/chat-detail.html',
-                    controller: 'ChatDetailCtrl'
-			}
-		}
-	})
-	
 	 .state('tab.trackers', {
 		url: '/trackers',
 		views : {
@@ -104,9 +94,9 @@ psiApp
 			}
   })
         .state('tab.calendar', {
-            url: '/calendar',
+            url: '/trackers/calendar',
             views: {
-                'tab-calendar': {
+                'tab-trackers': {
                     templateUrl: 'templates/tab-calendar.html',
                     controller: 'CalendarCtrl'
 			}

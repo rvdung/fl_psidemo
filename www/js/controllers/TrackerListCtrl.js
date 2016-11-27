@@ -1,10 +1,32 @@
 var trackersListModule = angular.module('TrackersList',['ngCordova']);
 
-trackersListModule.controller('TrackersListCtrl',['$scope','$cordovaSQLite','$ionicPlatform','TrackersService',
-	function($scope,$cordovaSQLite,$ionicPlatform,TrackersService){
+trackersListModule.controller('TrackersListCtrl',['$scope','$cordovaSQLite','$ionicPlatform','TrackersService','$state','$actionButton'
+	,function($scope,$cordovaSQLite,$ionicPlatform,TrackersService,$state,$actionButton){
 
 		initData();
 		initMethods();
+
+
+	 $actionButton.create({
+		mainAction : {
+			icon : 'ion-android-create',
+			backgroundColor : 'green',
+			textColor : ' white',
+			onClick : function() {
+				console.log('clicked main BUTTON');
+			}
+		},
+		buttons : [ {
+			icon : 'ion-android-calendar',
+			label : 'Xem lịch',
+			backgroundColor : 'orange',
+			iconColor : 'white',
+			onClick : function() {
+				console.log('clicked calendar');
+				window.plugins.calendar.openCalendar();
+			}
+		} ]
+	});
 
 		function initData(){
 			$scope.newTracker = {
@@ -31,7 +53,7 @@ trackersListModule.controller('TrackersListCtrl',['$scope','$cordovaSQLite','$io
 
 		function toggleEdit() {
 			$scope.shouldShowDelete = !$scope.shouldShowDelete;
-			$scope.editButtonLabel = $scope.shouldShowDelete ? "Xong" : $scope.editButtonLabel;
+			$scope.editButtonLabel = $scope.shouldShowDelete ? "Xong" : "Xóa";
 		}
 
 		function addNewTracker()
@@ -86,4 +108,5 @@ trackersListModule.controller('TrackersListCtrl',['$scope','$cordovaSQLite','$io
 				});
 			}
 		}
+
 }]);
