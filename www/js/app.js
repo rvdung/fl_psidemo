@@ -55,15 +55,11 @@ psiApp
             }
         })
 
-        .state('tab.pdfviewer', {
+        .state('pdfviewer', {
             cache: false,
             url: '/home/pdfviewer/:menuCode',
-            views: {
-                'tab-home': {
-                    templateUrl: 'templates/tab-pdf-viewer.html',
-                    controller: 'PDFCtrl'
-                }
-            }
+            templateUrl: 'templates/tab-pdf-viewer.html',
+            controller: 'PDFCtrl'
         })
 
         .state('tab.masons', {
@@ -77,45 +73,43 @@ psiApp
         })
 
         .state('tab.trackers', {
-                url: '/trackers',
-                views: {
-                    'tab-trackers': {
-                        controller: 'TrackersListCtrl',
-                        templateUrl: 'templates/tracker-list.html'
-                    }
+            url: '/trackers',
+            views: {
+                'tab-trackers': {
+                    controller: 'TrackersListCtrl',
+                    templateUrl: 'templates/tracker-list.html'
                 }
-            })
-            .state('tab.tracker-detail', {
-                url: '/trackers/:id',
-                views: {
-                    'tab-trackers': {
-                        controller: 'TrackerDetailsCtrl',
-                        templateUrl: 'templates/tracker-detail.html'
-                    }
-                }
-            })
-            .state('tab.videoplayer', {
-                cache: false,
-                url: '/home/videoplayer/:menuCode',
-                views: {
-                    'tab-home': {
-                        templateUrl: 'templates/tab-video-player.html',
-                        controller: 'videoCtrl'
-                    }
-                }
-            })
-    })
-    .state('tab.calendar', {
-        url: '/trackers/calendar',
-        views: {
-            'tab-trackers': {
-                templateUrl: 'templates/tab-calendar.html',
-                controller: 'CalendarCtrl'
             }
-        }
+        })
+
+        .state('tab.tracker-detail', {
+            url: '/trackers/:id',
+            views: {
+                'tab-trackers': {
+                    controller: 'TrackerDetailsCtrl',
+                    templateUrl: 'templates/tracker-detail.html'
+                }
+            }
+        })
+
+        .state('videoplayer', {
+            cache: false,
+            url: '/home/videoplayer/:menuCode',
+            templateUrl: 'templates/tab-video-player.html',
+            controller: 'videoCtrl'
+        })
+
+        .state('tab.calendar', {
+            url: '/trackers/calendar',
+            views: {
+                'tab-trackers': {
+                    templateUrl: 'templates/tab-calendar.html',
+                    controller: 'CalendarCtrl'
+                }
+            }
+        });
+
+
+        // if none of the above states are matched, use this as the fallback
+        $urlRouterProvider.otherwise('/tab/home');
     });
-
-
-// if none of the above states are matched, use this as the fallback
-$urlRouterProvider.otherwise('/tab/home');
-});
