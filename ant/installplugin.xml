@@ -64,12 +64,7 @@
         <ant antfile="./ant/subScripts/genericExec.xml" target="genericExec" inheritall="true">
             <property name="command" value="ionic" />
             <property name="args" value="plugin add cordova-plugin-crosswalk-webview" />
-        </ant>
-        <echo>Install cordova-plugin-screen-orientation</echo>
-        <ant antfile="./ant/subScripts/genericExec.xml" target="genericExec" inheritall="true">
-            <property name="command" value="ionic" />
-            <property name="args" value="plugin add cordova-plugin-screen-orientation" />
-        </ant>
+        </ant>        
     </target>
     <target name="install Javascript Plugins">
         <echo>Install Javascript Plugins</echo>
