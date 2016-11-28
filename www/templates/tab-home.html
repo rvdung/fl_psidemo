@@ -10,7 +10,7 @@
 			    <button class="button button-clear button-positive" ng-click="getMenuAction(menuItem)">
 				  {{::menuItem.label}} 
 				</button>
-				<img src="resources/img/Video Call Filled.svg">
+				<img src="resources/img/{{:: menuItem.type =='s' ? 'Video Call Filled.svg' : 'Video Call Filled.svg' }}">
 			    </li>
 			</ul>
 		</div>
