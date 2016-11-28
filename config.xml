@@ -1,15 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<widget id="com.ionicframework.psi952005" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-<<<<<<< HEAD
+<widget id="com.lpteam.core.ionic.psi" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
   <name>Cầu tiêu ROTO</name>
-  <description>&#xD;&#xD;
-        An Ionic Framework and Cordova project.&#xD;&#xD;
-=======
-    <name>psi</name>
-    <description>&#xD;&#xD; An Ionic Framework and Cordova project.&#xD;&#xD;
->>>>>>> branch 'master' of https://github.com/rvdung/fl_psidemo
-    </description>
-    <author email="you@example.com" href="http://example.com.com/">&#xD;&#xD; Your Name Here&#xD;&#xD;
+  <description>A project of LP Development team</description>
+    <author email="rvdung@gmail.com" href="http://example.com.com/">LP Development
     </author>
     <content src="index.html" />
     <access origin="*" />

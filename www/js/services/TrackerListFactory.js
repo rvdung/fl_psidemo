@@ -1,6 +1,8 @@
 var trackersListModule = angular.module('TrackersList');
 
-trackersListModule.factory('TrackersService',['$cordovaSQLite','$ionicPlatform','$q',
+trackersListModule
+		.factory(
+				'TrackersService',['$cordovaSQLite','$ionicPlatform','$q',
 	function($cordovaSQLite,$ionicPlatform,$q){
 		var db;
 		var trackersList;
@@ -23,7 +25,7 @@ trackersListModule.factory('TrackersService',['$cordovaSQLite','$ionicPlatform',
 			  // 	db = window.openDatabase("myapp.db", '1.0', 'Trackers DB', -1);
 			  // }
 
-			  db = $cordovaSQLite.openDB({name:"myapp.db",iosDatabaseLocation:'default' });
+			  db = $cordovaSQLite.openDB({name:"myapp.db",iosDatabaseLocation:'default'});
 			  
 			   var query = "CREATE TABLE IF NOT EXISTS trackers_list (id INTEGER PRIMARY KEY AUTOINCREMENT, name STRING, value TEXT , ngaytao DATETIME);";
 			    runQuery(query,[],function(res) {
@@ -52,7 +54,7 @@ trackersListModule.factory('TrackersService',['$cordovaSQLite','$ionicPlatform',
 		}
 
 		function addNewTracker(name) {
-			console.log('adding new tracker :'+name);
+			console.log('adding new tracker :'+ name);
 			var deferred = $q.defer();
 			var query = "INSERT INTO trackers_list (name, ngaytao) VALUES (?,datetime())";
 			runQuery(query,[name],function(response){

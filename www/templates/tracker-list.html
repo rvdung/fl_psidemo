@@ -1,30 +1,31 @@
 <ion-view view-title="Ghi chú" alight-title="center">
-  <ion-content>
+  <ion-content  class="padding">
 
-  <ion-list>
-    <ion-item class="item item-divider">
-      Thêm ghi chú
-    </ion-item>
+  <ion-list ng-show="startInsert">
     <ion-item>
-    <input type="text" placeholder="Điền tên ghi chú" ng-model="newTracker.name">
+    	  <label class="item item-input item-floating-label">
+		    <span class="input-label">Nhập ghi chú</span>
+		    <input id="input-note" type="text" ng-model="newTracker.name" placeholder="Nhập ghi chú">
+		  </label>
     </ion-item>
    </ion-list>
-
-      <button class="button button-small" ng-click="addNewTracker()">Thêm</button>
-      <button class="button button-small button-dark" ng-click="toggleEdit()">{{editButtonLabel}}</button>
-
-   <ion-list show-delete="shouldShowDelete">
-   <ion-item class="item item-divider">
-    	Danh sách ghi chú
-    </ion-item>
-    <ion-item ng-show="loadingTrackers">
-     	<ion-spinner icon="spiral"></ion-spinner>
-    </ion-item>
-    <ion-item ui-sref="tab.tracker-detail({id:tracker.id})" class="item-icon-right" ng-repeat="tracker in trackersList">
-    	{{tracker.name}}
-    	<ion-delete-button class="ion-minus-circled" ng-click="deleteTracker(tracker.id)"></ion-delete-button>
-    	<i class="icon ion-chevron-right"></i>
-    </ion-item>
-   </ion-list>
+   
+	<div class="button-bar">
+	  <a class="button" ng-click="addNewTracker()">{{startInsert ? newTracker.name == '' ? 'Bỏ qua' : 'Lưu' : 'Thêm'}}</a>
+	  <a class="button" ng-click="toggleEdit()">{{editButtonLabel}}</a>
+	</div>
+	
+   <ion-item-group>
+	   	<ion-item class="item item-divider">
+	    	Danh sách ghi chú
+	    </ion-item>
+	    <ion-item ng-show="loadingTrackers">
+	     	<ion-spinner icon="spiral"></ion-spinner>
+	    </ion-item>
+	    <ion-item ng-click="toggleTracker(tracker.id, $index)" class="item-icon-right" ng-repeat="tracker in trackersList track by $index">
+	    	{{tracker.name}}
+	    	<i class="icon {{shouldShowDelete ? 'ion-minus-circled' : 'ion-edit'}}"></i>
+	    </ion-item>
+   </ion-item-group>
   </ion-content>
 </ion-view>

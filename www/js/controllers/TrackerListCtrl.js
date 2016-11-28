@@ -1,34 +1,36 @@
 var trackersListModule = angular.module('TrackersList',['ngCordova']);
 
 trackersListModule.controller('TrackersListCtrl',['$scope','$cordovaSQLite','$ionicPlatform','TrackersService','$state','$actionButton'
-	,function($scope,$cordovaSQLite,$ionicPlatform,TrackersService,$state,$actionButton){
-
+	,function($scope,$cordovaSQLite,$ionicPlatform,TrackersService,$state/*,$actionButton*/){
+		
 		initData();
 		initMethods();
 
 
-	 $actionButton.create({
-		mainAction : {
-			icon : 'ion-android-create',
-			backgroundColor : 'green',
-			textColor : ' white',
-			onClick : function() {
-				console.log('clicked main BUTTON');
-			}
-		},
-		buttons : [ {
-			icon : 'ion-android-calendar',
-			label : 'Xem lịch',
-			backgroundColor : 'orange',
-			iconColor : 'white',
-			onClick : function() {
-				console.log('clicked calendar');
-				window.plugins.calendar.openCalendar();
-			}
-		} ]
-	});
+//	 $actionButton.create({
+//		mainAction : {
+//			icon : 'ion-android-create',
+//			backgroundColor : 'green',
+//			textColor : ' white',
+//			onClick : function() {
+//				console.log('clicked main BUTTON');
+//			}
+//		},
+//		buttons : [ {
+//			icon : 'ion-android-calendar',
+//			label : 'Xem lịch',
+//			backgroundColor : 'orange',
+//			iconColor : 'white',
+//			onClick : function() {
+//				console.log('clicked calendar');
+//				window.plugins.calendar.openCalendar();
+//			}
+//		} ]
+//	});
 
 		function initData(){
+			$scope.startInsert = false;
+			$scope.editButtonLabel = "Xóa";
 			$scope.newTracker = {
 				name: ''
 			};
@@ -53,9 +55,9 @@ trackersListModule.controller('TrackersListCtrl',['$scope','$cordovaSQLite','$io
 
 		function toggleEdit() {
 			$scope.shouldShowDelete = !$scope.shouldShowDelete;
-			$scope.editButtonLabel = $scope.shouldShowDelete ? "Xong" : "Xóa";
+			$scope.editButtonLabel = $scope.shouldShowDelete ? "Xóa xong" : "Xóa";
 		}
-
+		
 		function addNewTracker()
 		{
 			if($scope.newTracker.name != '' && $scope.newTracker.name.length > 0){
@@ -64,12 +66,13 @@ trackersListModule.controller('TrackersListCtrl',['$scope','$cordovaSQLite','$io
 					$scope.newTracker.name = '';
 					console.log("New Tracker has been added.");
 					fetchTrackers();
+					$scope.startInsert = false;
 				},function(error){
-					alert("Lỗi xảy ra trong quá trình thêm ghi chú");
+					$scope.startInsert = true;
 				});
 			}else
 			{
-				alert('Hãy điền tên ghi chú.');
+				$scope.startInsert = !$scope.startInsert;
 			}
 		}
 
@@ -81,7 +84,7 @@ trackersListModule.controller('TrackersListCtrl',['$scope','$cordovaSQLite','$io
 				$scope.trackersList = [];
 				for(var i=0;i<response.rows.length;i++)
 				{
-					$scope.trackersList.push({id:response.rows.item(i).id,name:response.rows.item(i).name});
+					$scope.trackersList.unshift({id:response.rows.item(i).id,name:response.rows.item(i).name});
 				}
 			}else
 			{
@@ -93,6 +96,16 @@ trackersListModule.controller('TrackersListCtrl',['$scope','$cordovaSQLite','$io
 		{
 			$scope.loadingTrackers = false;
 			$scope.message = "Lỗi xảy ra trong quá trình hiển thị danh sách ghi chú";
+		}
+		
+		$scope.toggleTracker = function(id,index){
+			if($scope.shouldShowDelete){
+				deleteTracker(index,id);
+			} else {
+				 $state.go('tab.tracker-detail', {
+					 id: id
+		         });
+			}
 		}
 
 		function deleteTracker(index,id)
