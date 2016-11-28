@@ -1,47 +1,47 @@
 [{
-	"provinceCode": "001",
-	"contents": [{
-		"code": "001",
-		"label": "Các vấn đề vệ sinh nói chung",
-		"type": "s",
-		"resource": "resources/van_de_vs_chung.pdf"
-	}, {
-		"code": "002",
-		"label": "5 bước xây dựng nhà vệ sinh",
-		"type": "v",
-		"resource": "resources/tien_giang_nvl.pdf"
-	}, {
-		"code": "003",
-		"label": "Các vật liệu cần dùng",
-		"type": "s",
-		"resource": "resources/tien_giang_nvl.pdf"
-	}, {
-		"code": "004",
-		"label": "Các câu hỏi thường gặp về ROTO",
-		"type": "s",
-		"resource": "resources/tg_nha_vs_roto.pdf"
-	}]
+    "provinceCode": "001",
+    "contents": [{
+        "code": "001",
+        "label": "Các vấn đề vệ sinh nói chung",
+        "type": "s",
+        "resource": "resources/van_de_vs_chung.pdf"
+    }, {
+        "code": "002",
+        "label": "5 bước xây dựng nhà vệ sinh",
+        "type": "v",
+        "resource": "resources/testvideo.mp4"
+    }, {
+        "code": "003",
+        "label": "Các vật liệu cần dùng",
+        "type": "s",
+        "resource": "resources/tien_giang_nvl.pdf"
+    }, {
+        "code": "004",
+        "label": "Các câu hỏi thường gặp về ROTO",
+        "type": "s",
+        "resource": "resources/tg_nha_vs_roto.pdf"
+    }]
 }, {
-	"provinceCode": "002",
-	"contents": [{
-		"code": "001",
-		"label": "Các vấn đề vệ sinh nói chung",
-		"type": "s",
-		"resource": "/resources/van_de_vs_chung.pdf"
-	}, {
-		"code": "002",
-		"label": "Xây dựng nhà vệ sinh thấm dội",
-		"type": "s",
-		"resource": "/resources/Dak Nong- Nha vs tham doi.pdf"
-	}, {
-		"code": "003",
-		"label": "Các vật liệu cần dùng",
-		"type": "s",
-		"resource": "/resources/Tien Giang - Nguyen vat lieu.pdf"
-	}, {
-		"code": "004",
-		"label": "Các câu hỏi thường gặp",
-		"type": "s",
-		"resource": "/resources/Tien Giang- Nha ve sinh ROTO FAQ.pdf"
-	}]
+    "provinceCode": "002",
+    "contents": [{
+        "code": "001",
+        "label": "Các vấn đề vệ sinh nói chung",
+        "type": "s",
+        "resource": "/resources/van_de_vs_chung.pdf"
+    }, {
+        "code": "002",
+        "label": "Xây dựng nhà vệ sinh thấm dội",
+        "type": "s",
+        "resource": "/resources/Dak Nong- Nha vs tham doi.pdf"
+    }, {
+        "code": "003",
+        "label": "Các vật liệu cần dùng",
+        "type": "s",
+        "resource": "/resources/Tien Giang - Nguyen vat lieu.pdf"
+    }, {
+        "code": "004",
+        "label": "Các câu hỏi thường gặp",
+        "type": "s",
+        "resource": "/resources/Tien Giang- Nha ve sinh ROTO FAQ.pdf"
+    }]
 }]
