@@ -7,20 +7,21 @@
 	background-color: blue;
 } */
 .home-content {
-	height: calc(100vh - 55px);
+	height: calc(100vh - 53px);
 	width: 100%;
-	background-color: ;
-	background: url(../../resources/img/tattoo.png) #FF9027 ;
-    background-repeat:   no-repeat;
-    background-position: bottom right;      
-	background-size: 100%;
+	background-color: #FF9027;
 }
 
-.home-content {
-	
-}
+
 
 @media only screen and (orientation : portrait) {
+	
+	.home-content {
+		background-image: url(../../resources/img/tattoo.png) ;
+	    background-repeat:   no-repeat;
+	    background-position: bottom right;      
+		background-size: 100%;
+	}
 	.home-content div.scroll {
 		display: block;
 	}
@@ -43,12 +44,25 @@
 	.menu-list {
 		width: 100%;
 	}
+	
 	.menu-list li.item {
-		border-bottom: 1px #017A3E solid
+		border-bottom: 1px #017A3E solid;
+	}
+	
+	.menu-list li.item.item-last {
+		border-bottom: none;
 	}
 }
 
 @media only screen and (orientation : landscape) {
+	
+	.home-content {
+		background-image: url(../../resources/img/tattoo-landscape.png)   ;
+	    background-repeat:   no-repeat;
+	    background-position: bottom right;      
+		background-size: auto 100%; 
+	}
+	
 	.home-content div.scroll {
 		display: flex;
 	}

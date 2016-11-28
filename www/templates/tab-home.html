@@ -6,11 +6,11 @@
 		</div>
 		<div  class="home-menu">
 			<ul class="list menu-list">
-			    <li class="item " ng-repeat="menuItem in menu">
+			    <li class="item " ng-repeat="menuItem in menu" ng-class="{'item-last':$last}">
 			    <button class="button button-clear button-positive" ng-click="getMenuAction(menuItem)">
 				  {{::menuItem.label}} 
 				</button>
-				<img src="resources/img/Video Call Filled.svg">
+				<img src="resources/img/{{menuItem.type == 's'? 'Document Filled.svg' : 'Video Call Filled.svg' }} ">
 			    </li>
 			</ul>
 		</div>
