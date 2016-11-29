@@ -17,7 +17,7 @@ trackerDetailsModule.controller('TrackerDetailsCtrl',['$scope','$stateParams','$
 
 		function updateEntry()
 		{
-				Trackers.updateTracker($scope.trackerId,$scope.trackerInfo.value)
+				Trackers.updateTracker($scope.trackerId , $scope.trackerInfo.value)
 				.then(function(response){
 					alert("Đã lưu.");
 				},function(error){

@@ -6,28 +6,6 @@ trackersListModule.controller('TrackersListCtrl',['$scope','$cordovaSQLite','$io
 		initData();
 		initMethods();
 
-
-//	 $actionButton.create({
-//		mainAction : {
-//			icon : 'ion-android-create',
-//			backgroundColor : 'green',
-//			textColor : ' white',
-//			onClick : function() {
-//				console.log('clicked main BUTTON');
-//			}
-//		},
-//		buttons : [ {
-//			icon : 'ion-android-calendar',
-//			label : 'Xem lịch',
-//			backgroundColor : 'orange',
-//			iconColor : 'white',
-//			onClick : function() {
-//				console.log('clicked calendar');
-//				window.plugins.calendar.openCalendar();
-//			}
-//		} ]
-//	});
-
 		function initData(){
 			$scope.startInsert = false;
 			$scope.editButtonLabel = "Xóa";
@@ -82,12 +60,15 @@ trackersListModule.controller('TrackersListCtrl',['$scope','$cordovaSQLite','$io
 			if(response && response.rows && response.rows.length > 0)
 			{
 				$scope.trackersList = [];
-				for(var i=0;i<response.rows.length;i++)
+				for(var i=0;i < response.rows.length;i++)
 				{
-					$scope.trackersList.unshift({id:response.rows.item(i).id,name:response.rows.item(i).name});
+					$scope.trackersList.unshift({
+							id : response.rows.item(i).id
+						, 	name : response.rows.item(i).value
+						, 	createDate: response.rows.item(i).ngaytao
+						});
 				}
-			}else
-			{
+			} else {
 				$scope.message = "Chưa có ghi chú nào.";
 			}
 		}
