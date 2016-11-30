@@ -1,6 +1,4 @@
-var trackersListModule = angular.module('TrackersList',['ngCordova']);
-
-trackersListModule.controller('TrackersListCtrl',['$scope','$cordovaSQLite','$ionicPlatform','TrackersService','$state','$actionButton'
+psiApp.controller('TrackersListCtrl',['$scope','$cordovaSQLite','$ionicPlatform','TrackersService','$state','$actionButton'
 	,function($scope,$cordovaSQLite,$ionicPlatform,TrackersService,$state/*,$actionButton*/){
 		
 		initData();
