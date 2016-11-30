@@ -1,6 +1,5 @@
 var psiApp = angular.module('psiApp', [ 'ionic', 'pdf', 'ngCordova',
-		'$actionButton', 'ionic-material', 'ionMdInput', 'TrackersList',
-		'TrackerDetails' ]);
+		'$actionButton', 'ionic-material', 'ionMdInput' ]);
 
 psiApp.run(function($ionicPlatform, $rootScope, ProvincesService, MenuService) {
 	$ionicPlatform.ready(function() {
@@ -56,7 +55,7 @@ psiApp
 					}
 				}
 			})
-
+			
 			.state('pdfviewer', {
 				cache : false,
 				url : '/home/pdfviewer/:menuCode',
@@ -73,11 +72,22 @@ psiApp
 					}
 				}
 			})
+			
+			
+			.state('tab.notes-nav', {
+				url : '/notes',
+				views : {
+					'tab-notes' : {
+						templateUrl : 'templates/tab-notes-navigation.html',
+						controller : 'NotesNavigationCtrl'
+					}
+				}
+			})
 
 			.state('tab.trackers', {
-				url : '/trackers',
+				url : '/notes/trackers',
 				views : {
-					'tab-trackers' : {
+					'tab-notes' : {
 						controller : 'TrackersListCtrl',
 						templateUrl : 'templates/tracker-list.html'
 					}
@@ -85,9 +95,9 @@ psiApp
 			})
 
 			.state('tab.tracker-detail', {
-				url : '/trackers/:id',
+				url : '/notes/trackers/:id',
 				views : {
-					'tab-trackers' : {
+					'tab-notes' : {
 						controller : 'TrackerDetailsCtrl',
 						templateUrl : 'templates/tracker-detail.html'
 					}

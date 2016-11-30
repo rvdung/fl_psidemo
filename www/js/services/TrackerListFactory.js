@@ -1,7 +1,4 @@
-var trackersListModule = angular.module('TrackersList');
-
-trackersListModule
-		.factory(
+psiApp.factory(
 				'TrackersService',['$cordovaSQLite','$ionicPlatform','$q',
 	function($cordovaSQLite,$ionicPlatform,$q){
 		var db;
