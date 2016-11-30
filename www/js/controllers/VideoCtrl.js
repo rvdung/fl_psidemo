@@ -1,4 +1,4 @@
-psiApp.controller('videoCtrl', function($scope, $stateParams, pageService,
+psiApp.controller('videoCtrl', function($scope, $stateParams, pageService, $ionicHistory,
     MenuService) {
 
     MenuService.getMenuItemsByCode($stateParams.menuCode, function(menuItem) {
@@ -16,4 +16,9 @@ psiApp.controller('videoCtrl', function($scope, $stateParams, pageService,
         screen.unlockOrientation();
         console.log('leave - unlock')
     });
+
+    $scope.goBack = function() {
+        console.log('back');
+        $ionicHistory.goBack();
+    }
 });
