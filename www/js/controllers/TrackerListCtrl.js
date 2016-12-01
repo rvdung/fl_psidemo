@@ -1,5 +1,5 @@
-psiApp.controller('TrackersListCtrl',['$scope','$cordovaSQLite','$ionicPlatform','TrackersService','$state','$actionButton'
-	,function($scope,$cordovaSQLite,$ionicPlatform,TrackersService,$state/*,$actionButton*/){
+psiApp.controller('TrackersListCtrl',['$scope','$cordovaSQLite','$ionicPlatform','TrackersService','$state'
+	,function($scope,$cordovaSQLite,$ionicPlatform,TrackersService,$state){
 		
 		initData();
 		initMethods();
@@ -44,6 +44,7 @@ psiApp.controller('TrackersListCtrl',['$scope','$cordovaSQLite','$ionicPlatform'
 					fetchTrackers();
 					$scope.startInsert = false;
 				},function(error){
+					console.log(error.message);
 					$scope.startInsert = true;
 				});
 			}else

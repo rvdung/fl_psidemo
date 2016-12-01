@@ -1,5 +1,4 @@
-psiApp.factory(
-				'TrackersService',['$cordovaSQLite','$ionicPlatform','$q',
+psiApp.factory('TrackersService',['$cordovaSQLite','$ionicPlatform','$q',
 	function($cordovaSQLite,$ionicPlatform,$q){
 		var db;
 		var trackersList;
@@ -24,9 +23,9 @@ psiApp.factory(
 
 			  db = $cordovaSQLite.openDB({name:"myapp.db",iosDatabaseLocation:'default'});
 			  
-			   var query = "CREATE TABLE IF NOT EXISTS trackers_list (id INTEGER PRIMARY KEY AUTOINCREMENT, name STRING, value TEXT , createdDate DATETIME);";
+			   var query = "CREATE TABLE IF NOT EXISTS trackers_list (id INTEGER PRIMARY KEY AUTOINCREMENT, name STRING, value TEXT, createdDate DATETIME);";
 			    runQuery(query,[],function(res) {
-			      console.log("table created ");
+			      console.log(res);
 			    }, function (err) {
 			      console.log(err);
 			    });
@@ -53,7 +52,7 @@ psiApp.factory(
 		function addNewTracker(name) {
 			console.log('adding new tracker :'+ name);
 			var deferred = $q.defer();
-			var query = "INSERT INTO trackers_list (value , createdDate) VALUES ( ? ,datetime())";
+			var query = "INSERT INTO trackers_list (value,createdDate) VALUES (?,datetime())";
 			runQuery(query,[name],function(response){
 				//Success Callback
 				console.log(response);
