@@ -1,6 +1,4 @@
-var trackerDetailsModule = angular.module('TrackerDetails',['ngCordova']);
-
-trackerDetailsModule.controller('TrackerDetailsCtrl',['$scope','$stateParams','$cordovaSQLite','$ionicPlatform','TrackersService',
+psiApp.controller('TrackerDetailsCtrl',['$scope','$stateParams','$cordovaSQLite','$ionicPlatform','TrackersService',
 	function($scope,$stateParams,$cordovaSQLite,$ionicPlatform,Trackers){
 
 		initData();
@@ -17,7 +15,7 @@ trackerDetailsModule.controller('TrackerDetailsCtrl',['$scope','$stateParams','$
 
 		function updateEntry()
 		{
-				Trackers.updateTracker($scope.trackerId,$scope.trackerInfo.value)
+				Trackers.updateTracker($scope.trackerId , $scope.trackerInfo.value)
 				.then(function(response){
 					alert("Đã lưu.");
 				},function(error){

@@ -1,19 +1,29 @@
 <ion-view view-title="Thợ xây">
   <ion-content>
+    <div class="list">
+      <label class="item item-input item-select">
+        <div class="input-label">
+          Chọn Huyện
+        </div> 
+        <select ng-options="huyen as huyen.label for huyen in huyens" ng-model="selectHuyen" ng-change="changeHuyen(selectHuyen)"></select>
+      </label>
+    </div>
       <div style="height:4em">
         <label class="item item-input">
           <i class="icon ion-search placeholder-icon"></i>
           <input type="Search" placeholder="Tìm kiếm" ng-model="searchText">
         </label>
         </div>
-	<scroll direction="y"> 
     <ion-list>
-      <ion-item class="item-remove-animate" ng-repeat="mason in masons | filter:searchText" type="item-text-wrap">
+      <ion-item class="item item-button-right" ng-repeat="mason in masons | filter:searchText" type="item-text-wrap">
         <h2>{{mason.Name}}</h2>
         <p>{{mason.Phone}}</p>
         <p>{{mason.District}}</p>
+        <button class="button button-balanced" ng-click="call(mason.Phone)" style="top:1.5em;">
+        <i  class="icon ion-ios-telephone"></i>
+        </button>
+
       </ion-item>
     </ion-list>
-    </scroll>
   </ion-content>
 </ion-view>
