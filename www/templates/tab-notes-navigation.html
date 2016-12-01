@@ -4,11 +4,11 @@
 		<div class="home-logo">
 			<img src="resources/img/TOT-5.png">
 		</div>
-		<div  style="top:4em;">
-		<button ng-repeat="menuItem in menu"  class="button button-block button-balanced icon-right {{menuItem.icon}}" ng-click="getMenuAction(menuItem)">
-			  {{::menuItem.label}} 			  
+		<div  style="padding-top:4em;">
+			<button ng-repeat="menuItem in menu"  class="button  button-block button-balanced icon-right {{menuItem.icon}}" ng-click="getMenuAction(menuItem)" style="width:50%;margin-left:6em;">
+				  {{::menuItem.label}} 			  
 			</button>
-			</div>
+		</div>
 		
 	</ion-content> 
 </ion-view>
