@@ -19,8 +19,10 @@ psiApp.controller('PDFCtrl', function($scope, $ionicHistory, $stateParams, pageS
     });
 
     $scope.goBack = function() {
-        console.log('back');
-        $ionicHistory.goBack();
+        if ($scope.showAdv === false) {
+            console.log('back');
+            $ionicHistory.goBack();
+        }
     }
 
     function getRandomNumber() {
