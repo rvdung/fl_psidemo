@@ -2,8 +2,9 @@
     <a class="button nav_btn
 ion-arrow-left-a button-clear button-stable no-padding-left" on-touch="goBack()"></a>
     <ion-content class="fullscreen-player" padding="true" overflow-scroll="true">
-        <video controls="controls" preload="metadata" autoplay="autoplay" class="centerme">
+        <video controls="controls" preload="metadata" class="centerme">
             <source src={{videoUrl}} type="video/mp4" />
         </video>
     </ion-content>
+    <img ng-show="showAdv" src="{{getAdvUrl()}}" class="fullscreen-image">
 </ion-view>
