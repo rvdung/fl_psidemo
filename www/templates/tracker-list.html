@@ -1,4 +1,4 @@
-<ion-view view-title="Ghi chú" alight-title="center">
+<ion-view view-title="Ghi chú">
   <ion-content  class="padding">
 
   <ion-list ng-show="startInsert">
@@ -10,8 +10,8 @@
     </ion-item>
    </ion-list>
    
-	<div class="button-bar">
-	  <a class="button" ng-click="addNewTracker()">{{startInsert ? newTracker.name == '' ? 'Bỏ qua' : 'Lưu' : 'Thêm'}}</a>
+	<div class="button-bar ">
+	  <a class="button cautieu_button" ng-click="addNewTracker()">{{startInsert ? newTracker.name == '' ? 'Bỏ qua' : 'Lưu' : 'Thêm'}}</a>
 	  <a class="button" ng-click="toggleEdit()">{{editButtonLabel}}</a>
 	</div>
 	

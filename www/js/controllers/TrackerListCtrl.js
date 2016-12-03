@@ -3,7 +3,7 @@ psiApp.controller('TrackersListCtrl',['$scope','$cordovaSQLite','$ionicPlatform'
 		
 		initData();
 		initMethods();
-
+	
 		function initData(){
 			$scope.startInsert = false;
 			$scope.editButtonLabel = "Xóa";

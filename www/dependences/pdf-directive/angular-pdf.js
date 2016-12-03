@@ -94,7 +94,7 @@
 
                 scope.goPrevious = function() {
 
-                    if (scope.pageToDisplay <= 1) {
+                    if (scope.pageToDisplay <= 1 || scope.showAdv === true) {
                         console.log('previous < 1');
 
                     } else {
@@ -107,7 +107,7 @@
 
                 scope.goNext = function() {
 
-                    if (scope.pageToDisplay >= pdfDoc.numPages) {
+                    if (scope.pageToDisplay >= pdfDoc.numPages || scope.showAdv === true) {
                         console.log('next > numpages');
 
                     } else {
