@@ -23,7 +23,7 @@
 	            <i class="ion-chatbubble-working"></i>
 	          </div>
 	          <div class="timeline-item">
-		    	<h4><b>{{tracker.createdDate | amDateFormat:'LLL'}}</b></h4>
+		    	<h4><b>{{tracker.createdDate | amUtc | amLocal | amDateFormat:'LLL'}}</b></h4>
 		    	<p>{{tracker.value | limitTo: 300 }}{{tracker.value.length > 300 ? '&hellip;' : ''}}</p>
 	          </div>
 			</li>

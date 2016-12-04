@@ -1,4 +1,4 @@
-<ion-view view-title="{{trackerInfo.createdDate | amDateFormat:'LLL'}}">
+<ion-view view-title="{{trackerInfo.createdDate | amUtc | amLocal | amDateFormat:'LLL'}}">
 	<ion-content>
 	<p class="item item-divider item-button-right" style="font-size: 18px;">
 	<button class="button button-small icon-left cautieu-button"
