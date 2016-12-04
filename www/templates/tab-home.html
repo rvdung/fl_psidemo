@@ -3,14 +3,25 @@
 		<link rel="stylesheet" type="text/css" href="css/view/tab-home.css">
 		<div class="home-logo">
 			<img src="resources/img/TOT-5.png">
+			<button class="button button-clear button-positive button-setting" ui-sref="tab.setting">
+				 <img src="resources/img/Settings Filled.svg">
+			</button>
+				
 		</div>
 		<div  class="home-menu">
 			<ul class="list menu-list">
-			    <li class="item " ng-repeat="menuItem in menu" ng-class="{'item-last':$last}">
+			    <li class="item" ng-repeat="menuItem in menu" ng-class="{'item-last':$last}">
 			    <button class="button button-clear button-positive" ng-click="getMenuAction(menuItem)">
 				  {{::menuItem.label}} 
 				</button>
 				<img src="resources/img/{{menuItem.type == 's'? 'Document Filled.svg' : 'Video Call Filled.svg' }} ">
+			    </li>
+			    
+			     <li class="item">
+			    <button class="button button-clear button-positive" ng-click="clearProvince()">
+				  Clear province
+				</button>
+				<img src="resources/img/Document Filled.svg">
 			    </li>
 			</ul>
 		</div>

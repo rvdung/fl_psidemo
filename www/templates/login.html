@@ -1,12 +1,15 @@
 <ion-view view-title="Login" name="login-view" hide-nav-bar="true">
 
 <ion-content class="login-content padding">
-		<link rel="stylesheet" type="text/css" href="css/view/tab-login.css">
+		<link rel="stylesheet" type="text/css" href="css/view/login.css">
 <ul class="list menu-list">
+	<ion-item class="item item-divider" style="color:white">
+    	Má»�i báº¡n chá»�n tá»‰nh Ä‘ang á»Ÿ
+    </ion-item>
 	<li class="item " ng-repeat="province in provinces"
 		ng-class="{'item-last':$last}">
 		<button class="button button-clear button-positive" ng-click="chooseProvince(province)">
-				  {{::province.proviceName}}
+				  {{::province.provinceName}}
 		</button>
 	</li>
 </ul>

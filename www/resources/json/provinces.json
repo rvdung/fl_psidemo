@@ -1,10 +1,10 @@
 [
 	{
-		"proviceCode": "001",
-		"proviceName": "Tiền Giang"
+		"provinceCode": "001",
+		"provinceName": "Tiền Giang"
 	},
 	{
-		"proviceCode": "002",
-		"proviceName": "Đắk Nông"
+		"provinceCode": "002",
+		"provinceName": "Đắk Nông"
 	}
 ]

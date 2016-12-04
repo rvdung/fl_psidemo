@@ -7,8 +7,9 @@ psiApp
 					var service = {};
 					service.getViewCount = getViewCount;
 					service.addViewCount = addViewCount;
+					service.addViewCountByMenuCode = addViewCountByMenuCode;
 
-					function getViewCount() {
+					function getViewCount(callback) {
 						var isChange = false;
 						$rootScope.viewCount = localStorageService.get(key)
 								|| {};
@@ -29,7 +30,14 @@ psiApp
 						if (isChange) {
 							localStorageService.set(key, $rootScope.viewCount);
 						}
+						if (callback != undefined) {
+							callback();
+						}
 
+					}
+
+					function addViewCountByMenuCode(menuCode) {
+						addViewCount($rootScope.province.provinceCode, menuCode);
 					}
 
 					function addViewCount(provinceCode, menuCode) {
@@ -45,7 +53,8 @@ psiApp
 						} else {
 							$rootScope.viewCount[provinceCode][menuCode] = $rootScope.viewCount[provinceCode][menuCode] + 1;
 						}
-
+						console.log('$rootScope.viewCount--'
+								+ angular.toJson($rootScope.viewCount));
 						localStorageService.set(key, $rootScope.viewCount);
 					}
 

@@ -1,29 +1,27 @@
-psiApp.controller('HomeCtrl', function($scope, $rootScope, $state) {
-
-
-    var initInterval = setInterval(function() {
-        $scope.init()
-    }, 1000);
-
+psiApp.controller('SettingCtrl', function($scope, $rootScope, $state, ViewCountingService) {
+	
 	$scope.init = function() {
-		if ($rootScope.menu == undefined) {
-			return;
-		}
-		$scope.menu = $rootScope.menu;
-		clearInterval(initInterval);
-	}
+		ViewCountingService.getViewCount(function(){
+			$scope.statystics = [];
+			var i;
+			console.log('$rootScope.menu---' + angular.toJson($rootScope.menu));
 
-    $scope.getMenuAction = function(menuItem) {
-        if (menuItem.type == 's') {
-            $state.go('pdfviewer', {
-                menuCode: menuItem.code
-            });
-        } else if (menuItem.type == 'v') {
-            $state.go('videoplayer', {
-                menuCode: menuItem.code
-            });
-        } else {
-            $state.go('tab.home');
-        }
-    }
+			console.log('$rootScope.viewCount---' + angular.toJson($rootScope.viewCount));
+			for(i=0; i < $rootScope.menu.length; i ++){
+				$scope.statystics.push({
+					label: $rootScope.menu[i].label,
+					count: $rootScope.viewCount[$rootScope.province.provinceCode][$rootScope.menu[i].code]
+				});
+			}
+		});
+	};
+	
+
+	if ($rootScope.menu == undefined) {
+		$state.go('tab.home');
+	} else {
+		$scope.init();
+	}
+	
+	
 });
