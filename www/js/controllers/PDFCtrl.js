@@ -45,6 +45,6 @@ psiApp.controller('PDFCtrl', function($scope, $ionicHistory, $stateParams, pageS
         $scope.$apply(function() {
             $scope.showAdv = false;
         });
-    }, 10000);
+    }, 3000);
 
 });
