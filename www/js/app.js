@@ -1,39 +1,27 @@
 var psiApp = angular.module('psiApp', ['ionic', 'pdf', 'ngCordova',
-    '$actionButton', 'ionic-material', 'ionMdInput'
+    '$actionButton', 'ionic-material', 'ionMdInput', 'LocalStorageModule'
 ]);
 
-psiApp.run(function($ionicPlatform, $rootScope, ProvincesService, MenuService) {
+psiApp.run(function($ionicPlatform, $rootScope, localStorageService) {
     $ionicPlatform.ready(function() {
         if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
             cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
             cordova.plugins.Keyboard.disableScroll(true);
         }
         ionic.Platform.fullScreen();
-        //      if(window.screen != undefined){
-        //          window.screen.unlockOrientation();
-        //      }
     });
-
-    ProvincesService.getAll(function(response) {
-        if (response != undefined) {
-            $rootScope.provinces = response;
-            $rootScope.province = response[0];
-        }
-        if ($rootScope.province != undefined) {
-            MenuService.getMenuItemsByProvince($rootScope.province.proviceCode,
-                function(menuResponse) {
-                    if (menuResponse != undefined) {
-                        $rootScope.menu = menuResponse;
-                    }
-                });
-        }
-    });
+    
+    $rootScope.province = localStorageService.get('province');
 });
 
 psiApp
     .config(function($stateProvider, $urlRouterProvider,
-        $ionicConfigProvider) {
+        $ionicConfigProvider, localStorageServiceProvider) {
 
+    	// Configure local storage 
+    	 localStorageServiceProvider
+    	    .setDefaultToCookie(false);
+    	
         $ionicConfigProvider.tabs.position('bottom');
         $stateProvider
 
@@ -43,10 +31,17 @@ psiApp
             abstract: true,
             templateUrl: 'templates/tabs.html'
         })
+        
+         .state('login', {
+            url: '/home/login',
+            templateUrl: 'templates/login.html',
+            controller: 'LoginCtrl'
+        })
 
         // Each tab has its own nav history stack:
 
         .state('tab.home', {
+            cache: false,
             url: '/home',
             views: {
                 'tab-home': {
@@ -122,5 +117,8 @@ psiApp
         });
 
         // if none of the above states are matched, use this as the fallback
-        $urlRouterProvider.otherwise('/tab/home');
+        //$urlRouterProvider.otherwise('/tab/home');
+        
+
+    	$urlRouterProvider.otherwise('/tab/home');
     });

@@ -1,6 +1,5 @@
 
-.home-content {
-	height: calc(100vh - 53px);
+.login-content {
 	width: 100%;
 	background-color: #FF9027;
 }
