@@ -1,14 +1,20 @@
-psiApp.controller('TrackersListCtrl',['$scope','$cordovaSQLite','$ionicPlatform','TrackersService','$state'
-	,function($scope,$cordovaSQLite,$ionicPlatform,TrackersService,$state){
+psiApp.controller('TrackersListCtrl',['$scope','$cordovaSQLite','$location','$ionicPlatform','TrackersService','$state'
+	,function($scope,$cordovaSQLite,$location,$ionicPlatform,TrackersService,$state){
 		
 		initData();
 		initMethods();
+
+		$scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
+
+			console.log("State changed: ", toState);
+			fetchTrackers();
+		});
 	
 		function initData(){
 			$scope.startInsert = false;
 			$scope.editButtonLabel = "Xóa";
 			$scope.newTracker = {
-				name: ''
+				value: ''
 			};
 			$scope.loadingTrackers = false;
 			$scope.shouldShowDelete = false;
@@ -36,10 +42,10 @@ psiApp.controller('TrackersListCtrl',['$scope','$cordovaSQLite','$ionicPlatform'
 		
 		function addNewTracker()
 		{
-			if($scope.newTracker.name != '' && $scope.newTracker.name.length > 0){
-				TrackersService.addNewTracker($scope.newTracker.name)
+			if($scope.newTracker.value != '' && $scope.newTracker.value.length > 0){
+				TrackersService.addNewTracker($scope.newTracker.value)
 				.then(function(response){
-					$scope.newTracker.name = '';
+					$scope.newTracker.value = '';
 					console.log("New Tracker has been added.");
 					fetchTrackers();
 					$scope.startInsert = false;
@@ -63,15 +69,15 @@ psiApp.controller('TrackersListCtrl',['$scope','$cordovaSQLite','$ionicPlatform'
 				{
 					$scope.trackersList.unshift({
 							id : response.rows.item(i).id
-						, 	name : response.rows.item(i).value
-						, 	createDate: response.rows.item(i).ngaytao
+						, 	value : response.rows.item(i).value
+						, 	createdDate: response.rows.item(i).createdDate
 						});
 				}
 			} else {
 				$scope.message = "Chưa có ghi chú nào.";
 			}
 		}
-
+		
 		function fetchTrackerListErrorCB(error)
 		{
 			$scope.loadingTrackers = false;

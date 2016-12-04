@@ -1,5 +1,5 @@
-psiApp.controller('TrackerDetailsCtrl',['$scope','$stateParams','$cordovaSQLite','$ionicPlatform','TrackersService',
-	function($scope,$stateParams,$cordovaSQLite,$ionicPlatform,Trackers){
+psiApp.controller('TrackerDetailsCtrl',['$scope','$ionicPopup','$stateParams','$cordovaSQLite','$ionicPlatform','TrackersService',
+	function($scope,$ionicPopup,$stateParams,$cordovaSQLite,$ionicPlatform,Trackers){
 
 		initData();
 		initMethods();
@@ -17,9 +17,21 @@ psiApp.controller('TrackerDetailsCtrl',['$scope','$stateParams','$cordovaSQLite'
 		{
 				Trackers.updateTracker($scope.trackerId , $scope.trackerInfo.value)
 				.then(function(response){
-					alert("Đã lưu.");
+					//alert(title:"Lưu ghi chú","Đã lưu.");
+					$ionicPopup.alert({
+					   title: 'Lưu ghi chú',
+					   template: 'Đã lưu.'
+					 }).then(function(res) {
+					   console.log('Đã lưu ghi chú', res);
+					 });
 				},function(error){
-					alert("Lỗi xảy ra trong quá trình lưu.");
+					//alert(title:"Lưu ghi chú","Lỗi xảy ra trong quá trình lưu.");
+					$ionicPopup.alert({
+					   title: 'Lưu ghi chú',
+					   template: 'Lỗi xảy ra trong quá trình lưu.'
+					 }).then(function(res) {
+					   console.log('Lỗi lưu ghi chú', res);
+					 });
 				});
 		}
 }]);

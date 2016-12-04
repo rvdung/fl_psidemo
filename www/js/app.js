@@ -1,8 +1,8 @@
 var psiApp = angular.module('psiApp', ['ionic', 'pdf', 'ngCordova',
-    '$actionButton', 'ionic-material', 'ionMdInput'
+    '$actionButton', 'ionic-material', 'ionMdInput', 'angularMoment'
 ]);
 
-psiApp.run(function($ionicPlatform, $rootScope, ProvincesService, MenuService) {
+psiApp.run(function($ionicPlatform, $rootScope, ProvincesService, MenuService, amMoment) {
     $ionicPlatform.ready(function() {
         if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
             cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
@@ -12,6 +12,8 @@ psiApp.run(function($ionicPlatform, $rootScope, ProvincesService, MenuService) {
         //      if(window.screen != undefined){
         //          window.screen.unlockOrientation();
         //      }
+
+        amMoment.changeLocale('vi');
     });
 
     ProvincesService.getAll(function(response) {
