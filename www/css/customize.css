@@ -39,3 +39,13 @@ ion-header-bar.bar-stable.bar.bar-header {
 .cautieu_button {
 	background-color:#007A49;
 }
+
+textarea.notes-style {
+	background: url(../resources/img/ynxjD.png) repeat-y;
+	line-height: 25px;
+	height:92%;
+	width: 100%;
+	overflow: auto;
+	padding: 2px 10px;
+	border: solid 1px #ddd;
+}
