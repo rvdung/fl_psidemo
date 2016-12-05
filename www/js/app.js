@@ -1,8 +1,8 @@
 var psiApp = angular
 		.module('psiApp', [ 'ionic', 'pdf', 'ngCordova', '$actionButton',
-				'ionic-material', 'ionMdInput', 'LocalStorageModule' ]);
+				'ionic-material', 'ionMdInput', 'LocalStorageModule', 'angularMoment' ]);
 
-psiApp.run(function($ionicPlatform, $rootScope, localStorageService) {
+psiApp.run(function($ionicPlatform, $rootScope, localStorageService, amMoment) {
 	$ionicPlatform.ready(function() {
 		if (window.cordova && window.cordova.plugins
 				&& window.cordova.plugins.Keyboard) {
@@ -13,6 +13,7 @@ psiApp.run(function($ionicPlatform, $rootScope, localStorageService) {
 	});
 
 	$rootScope.province = localStorageService.get('province');
+	amMoment.changeLocale('vi');
 });
 
 psiApp.config(function($stateProvider, $urlRouterProvider,
