@@ -19,8 +19,8 @@
 	    <div class="divider-title"><b>Danh sách ghi chú</b></div>
 	    <ul class="timeline">
 	        <li ng-click="toggleTracker(tracker.id, $index)" ng-repeat="tracker in trackersList track by $index">
-	          <div class="timeline-thumb bg-color-green timeline-icon">
-	            <i class="ion-chatbubble-working"></i>
+	          <div class="timeline-thumb {{shouldShowDelete ? 'bg-color-red' : 'bg-color-green'}} timeline-icon">
+	            <i class="{{shouldShowDelete ? 'ion-minus-circled' : 'ion-chatbubble-working'}}"></i>
 	          </div>
 	          <div class="timeline-item">
 		    	<h4><b>{{tracker.createdDate | amUtc | amLocal | amDateFormat:'LLL'}}</b></h4>

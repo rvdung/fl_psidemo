@@ -25,11 +25,6 @@ psiApp.controller('HomeCtrl', function($scope, $rootScope, $state, MenuService, 
 		}
 	}
 	
-	$scope.clearProvince = function() {
-		$rootScope.province = undefined;
-		$state.go('login');
-	}
-	
 	if ($rootScope.province == undefined) {
 		$state.go('login');
 	} else {

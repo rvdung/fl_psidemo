@@ -1,11 +1,24 @@
-psiApp.controller('MasonCtrl', function($scope,$http) {
+psiApp.controller('MasonCtrl', function($scope,$rootScope, $http) {
 
 	
 	initData();
 	
+
+	$scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
+
+		console.log("State changed: ", toState);
+		$scope.masons = [];
+		initData();
+	});
+
 	function initData() {
 		$http.get("resources/json/mason.json").success(function(response) {
-			$scope.huyens = response.tiengiang;
+			if($rootScope.province.provinceCode == "001") {
+				$scope.huyens = response.tiengiang;
+			}
+			else {				
+				$scope.huyens = response.daknong;
+			}
 		    $scope.selectHuyen = $scope.huyens[0];
 			$http.get($scope.selectHuyen.link).success(function(response) {
 				$scope.masons = response;

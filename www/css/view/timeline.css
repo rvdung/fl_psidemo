@@ -54,12 +54,8 @@
     padding: 5px 15px;
 }
 
-.color-orange {
-    color: #ff9500 !important;
-}
-
-.bg-color-orange {
-    background-color: #ff9500 !important;
+.bg-color-red {
+    background-color: #FF0000 !important;
 }
 
 .bg-color-green {

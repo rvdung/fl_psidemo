@@ -16,6 +16,11 @@ psiApp.controller('SettingCtrl', function($scope, $rootScope, $state, ViewCounti
 		});
 	};
 	
+	$scope.clearProvince = function() {
+		$rootScope.province = undefined;
+		$state.go('login');
+	}
+	
 
 	if ($rootScope.menu == undefined) {
 		$state.go('tab.home');
