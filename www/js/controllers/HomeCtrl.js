@@ -1,6 +1,7 @@
 psiApp.controller('HomeCtrl', function($scope, $rootScope, $state, MenuService, ViewCountingService) {
 
 	$scope.init = function() {
+		console.log('$rootScope.province.provinceCode--' + $rootScope.province.provinceCode);
 		MenuService.getMenuItemsByProvince($rootScope.province.provinceCode,
 			function(menuResponse) {
 				if (menuResponse != undefined) {

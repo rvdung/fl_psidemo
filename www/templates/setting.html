@@ -11,7 +11,23 @@
 		ng-class="{'item-last':$last}">
 		{{::statystic.label}} : {{::statystic.count}}
 	</li>
+	<ion-item class="item item-divider">
+    	Thiết lập:
+    </ion-item>
+    <li class="item ">
+		<div class="list">
+		  <label class="item item-input item-select">
+		    <div class="input-label">
+		      Chọn tỉnh đang ở
+		    </div>
+		    <select ng-options="province.provinceName for province in provinces track by province.provinceCode" ng-model="selectedProvince"></select>
+		   <!-- https://docs.angularjs.org/api/ng/directive/ngOptions -->
+		  </label>
+		</div>
+	</li>
 </ul>
+
+
 
 
 
