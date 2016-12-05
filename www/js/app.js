@@ -1,14 +1,8 @@
-<<<<<<< HEAD
+
 var psiApp = angular
 		.module('psiApp', [ 'ionic', 'pdf', 'ngCordova', '$actionButton',
 				'ionic-material', 'ionMdInput', 'LocalStorageModule', 'angularMoment' ]);
-=======
-var psiApp = angular.module('psiApp', ['ionic', 'pdf', 'ngCordova',
-    '$actionButton', 'ionic-material', 'ionMdInput', 'angularMoment'
-]);
->>>>>>> branch 'master' of https://github.com/rvdung/fl_psidemo
 
-<<<<<<< HEAD
 psiApp.run(function($ionicPlatform, $rootScope, localStorageService, amMoment) {
 	$ionicPlatform.ready(function() {
 		if (window.cordova && window.cordova.plugins
@@ -18,21 +12,6 @@ psiApp.run(function($ionicPlatform, $rootScope, localStorageService, amMoment) {
 		}
 		ionic.Platform.fullScreen();
 	});
-=======
-psiApp.run(function($ionicPlatform, $rootScope, ProvincesService, MenuService, amMoment) {
-    $ionicPlatform.ready(function() {
-        if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
-            cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
-            cordova.plugins.Keyboard.disableScroll(true);
-        }
-        ionic.Platform.fullScreen();
-        //      if(window.screen != undefined){
-        //          window.screen.unlockOrientation();
-        //      }
-
-        amMoment.changeLocale('vi');
-    });
->>>>>>> branch 'master' of https://github.com/rvdung/fl_psidemo
 
 	$rootScope.province = localStorageService.get('province');
 	amMoment.changeLocale('vi');
