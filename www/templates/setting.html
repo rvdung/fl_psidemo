@@ -9,13 +9,12 @@
     </ion-item>
 	<li class="item " ng-repeat="statistic in statistics"
 		ng-class="{'item-last':$last}">
-		{{::statystic.label}} : {{::statystic.count}}
+		{{::statistic.label}} : {{::statistic.count}}
 	</li>
 </ul>
 			    
 <button class="button button-positive icon-left" ng-click="clearProvince()">
-<i class="ion-gear-a"></i>
-  Thay đổi tỉnh thành
+	Thay đổi tỉnh thành
 </button>
 </ion-content> 
 </ion-view>
