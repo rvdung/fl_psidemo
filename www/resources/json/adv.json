@@ -1,10 +1,10 @@
 [{
     "code": "001",
-    "resource": "resources/adv/test2.png"
+    "resource": "resources/adv/test1.jpg"
 }, {
     "code": "002",
-    "resource": "resources/adv/flasher.png"
+    "resource": "resources/adv/test3.jpg"
 }, {
     "code": "003",
-    "resource": "resources/adv/image.png"
+    "resource": "resources/adv/test3.jpg"
 }]
