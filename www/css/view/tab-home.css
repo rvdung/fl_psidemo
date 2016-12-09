@@ -1,25 +1,14 @@
-/* .home-logo {
-	background-color: red;
-}
-
-
-.home-menu {
-	background-color: blue;
-} */
 .home-content {
 	height: calc(100vh - 53px);
 	width: 100%;
 	background-color: #FF9027;
 }
 
-
-
 @media only screen and (orientation : portrait) {
-	
 	.home-content {
-		background-image: url(../../resources/img/tattoo.png) ;
-	    background-repeat:   no-repeat;
-	    background-position: bottom right;      
+		background-image: url(../../resources/img/tattoo.png);
+		background-repeat: no-repeat;
+		background-position: bottom right;
 		background-size: 100%;
 	}
 	.home-content div.scroll {
@@ -41,28 +30,27 @@
 		margin: auto;
 		text-align: center;
 	}
-	.menu-list {
+	.home-content .menu-list {
 		width: 100%;
 	}
-	
-	.menu-list li.item {
+	.home-content .menu-list li.item {
 		border-bottom: 1px #017A3E solid;
 	}
-	
-	.menu-list li.item.item-last {
+	.home-content .menu-list li.item.item-last {
 		border-bottom: none;
+	}
+	.button.button-setting {
+		right: 0px;
 	}
 }
 
 @media only screen and (orientation : landscape) {
-	
 	.home-content {
-		background-image: url(../../resources/img/tattoo-landscape.png)   ;
-	    background-repeat:   no-repeat;
-	    background-position: bottom right;      
-		background-size: auto 100%; 
+		background-image: url(../../resources/img/tattoo-landscape.png);
+		background-repeat: no-repeat;
+		background-position: bottom right;
+		background-size: auto 100%;
 	}
-	
 	.home-content div.scroll {
 		display: flex;
 	}
@@ -78,41 +66,56 @@
 	.home-logo img {
 		width: 100%;
 	}
-	
 	.home-menu {
 		padding-left: 16px;
 	}
 	.home-menu  .menu-list {
 		width: calc(70% - 16px);
 	}
+	.button.button-setting {
+		left: 0px;
+	}
 }
 
+.button.button-setting {
+	position: absolute;
+	top: 0px;
+	padding: 0px;
+	opacity: 0.3;
+	width: 30px;
+	height: 30px;
 }
+
+.button.button-setting img {
+	width: 30px;
+	height: 30px;
+}
+
 .home-menu {
 	position: relative;
 }
 
-.menu-list {
+.home-content .menu-list {
 	position: absolute;
 	bottom: 0px;
 	right: 0px;
 	width: 100%;
 }
 
-.menu-list li.item {
+.home-content .menu-list li.item {
 	padding: 0px;
-	display: flex;	
+	display: flex;
 	vertical-align: middle;
 }
 
-.menu-list li.item .button.button-positive.button-clear {
+.home-content .menu-list li.item .button.button-positive.button-clear {
 	color: white;
 	text-align: right;
 	width: 100%;
 	padding: 0px;
 }
 
-.menu-list li.item img {
+.home-content .menu-list li.item img {
 	width: 32px;
 	height: 32px;
 	padding: 6px;

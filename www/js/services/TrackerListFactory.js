@@ -13,15 +13,7 @@ psiApp.factory('TrackersService',['$cordovaSQLite','$ionicPlatform','$q',
 
 		function initDB() {
 		  $ionicPlatform.ready(function() {
-		  	//   if(window.cordova)
-		  	//   {
-			  // 	db = $cordovaSQLite.openDB("myapp.db");
-			  // }else
-			  // {
-			  // 	db = window.openDatabase("myapp.db", '1.0', 'Trackers DB', -1);
-			  // }
-
-			  db = $cordovaSQLite.openDB({name:"myapp.db",iosDatabaseLocation:'default'});
+			  db = $cordovaSQLite.openDB({name:"psiRoto.db",iosDatabaseLocation:'default'});
 			  
 			   var query = "CREATE TABLE IF NOT EXISTS trackers_list (id INTEGER PRIMARY KEY AUTOINCREMENT, name STRING, value TEXT, createdDate DATETIME);";
 			    runQuery(query,[],function(res) {

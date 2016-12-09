@@ -1,0 +1,48 @@
+
+.login-content {
+	width: 100%;
+	background-color: #007A3D; /* #FF9027; */
+}
+
+.login-content > div {
+	display: block;	
+	vertical-align: middle;
+}
+
+.login-content .menu-list li.item {
+	padding: 0px;
+	display: flex;	
+	vertical-align: middle;
+}
+
+.login-content .menu-list li.item {
+	padding: 0px;
+	display: flex;	
+	vertical-align: middle;
+	background-color: #FF9027;
+	margin-bottom: 10px;
+}
+
+.login-content .menu-list li.item,
+.login-content .menu-list ion-item {
+
+	margin-bottom: 10px;
+}
+
+
+.login-content .menu-list li.item .button.button-positive.button-clear {
+	color: white;
+	text-align: center;
+	width: 100%;
+	padding: 0px;
+}
+
+.login-content .menu-list li.item img {
+	width: 32px;
+	height: 32px;
+	padding: 6px;
+	margin-top: 7px;
+	margin-left: 5px;
+	border-radius: 50px;
+	background-color: #017A3E;
+}

@@ -1,0 +1,20 @@
+
+<ion-view view-title="Cài đặt" name="setting-view" hide-nav-bar="false">
+
+<ion-content class="setting-content padding">
+
+<ul class="list menu-list">
+	<ion-item class="item item-divider">
+    	Thống kê truy cập:
+    </ion-item>
+	<li class="item " ng-repeat="statistic in statistics"
+		ng-class="{'item-last':$last}">
+		{{::statistic.label}} : {{::statistic.count}}
+	</li>
+</ul>
+			    
+<button class="button button-positive icon-left" ng-click="clearProvince()">
+	Thay đổi tỉnh thành
+</button>
+</ion-content> 
+</ion-view>

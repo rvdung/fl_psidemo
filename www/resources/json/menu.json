@@ -9,7 +9,7 @@
         "code": "002",
         "label": "5 bước xây dựng nhà vệ sinh",
         "type": "v",
-        "resource": "resources/testvideo.mp4"
+        "resource": "resources/roto-video.mp4"
     }, {
         "code": "003",
         "label": "Các vật liệu cần dùng",
@@ -32,16 +32,16 @@
         "code": "002",
         "label": "Xây dựng nhà vệ sinh thấm dội",
         "type": "s",
-        "resource": "/resources/Dak Nong- Nha vs tham doi.pdf"
+        "resource": "/resources/dn_nha_vs_tham_doi.pdf"
     }, {
         "code": "003",
         "label": "Các vật liệu cần dùng",
         "type": "s",
-        "resource": "/resources/Tien Giang - Nguyen vat lieu.pdf"
+        "resource": "/resources/tien_giang_nvl.pdf"
     }, {
         "code": "004",
         "label": "Các câu hỏi thường gặp",
         "type": "s",
-        "resource": "/resources/Tien Giang- Nha ve sinh ROTO FAQ.pdf"
+        "resource": "resources/tg_nha_vs_roto.pdf"
     }]
 }]

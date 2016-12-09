@@ -1,29 +1,33 @@
-psiApp.controller('HomeCtrl', function($scope, $rootScope, $state) {
-
-
-    var initInterval = setInterval(function() {
-        $scope.init()
-    }, 1000);
+psiApp.controller('HomeCtrl', function($scope, $rootScope, $state, MenuService, ViewCountingService) {
 
 	$scope.init = function() {
-		if ($rootScope.menu == undefined) {
-			return;
-		}
-		$scope.menu = $rootScope.menu;
-		clearInterval(initInterval);
+		MenuService.getMenuItemsByProvince($rootScope.province.provinceCode,
+			function(menuResponse) {
+				if (menuResponse != undefined) {
+					$rootScope.menu = menuResponse;
+					$scope.menu = $rootScope.menu;
+				}
+			});
 	}
 
-    $scope.getMenuAction = function(menuItem) {
-        if (menuItem.type == 's') {
-            $state.go('pdfviewer', {
-                menuCode: menuItem.code
-            });
-        } else if (menuItem.type == 'v') {
-            $state.go('videoplayer', {
-                menuCode: menuItem.code
-            });
-        } else {
-            $state.go('tab.home');
-        }
-    }
+	$scope.getMenuAction = function(menuItem) {
+		ViewCountingService.addViewCountByMenuCode(menuItem.code);
+		if (menuItem.type == 's') {
+			$state.go('pdfviewer', {
+				menuCode : menuItem.code
+			});
+		} else if (menuItem.type == 'v') {
+			$state.go('videoplayer', {
+				menuCode : menuItem.code
+			});
+		} else {
+			$state.go('tab.home');
+		}
+	}
+	
+	if ($rootScope.province == undefined) {
+		$state.go('login');
+	} else {
+		$scope.init();
+	}
 });

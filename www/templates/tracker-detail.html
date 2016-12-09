@@ -1,8 +1,9 @@
-<ion-view view-title="{{trackerInfo.value}}" alight-title="right">
+<ion-view view-title="{{trackerInfo.createdDate | amUtc | amLocal | amDateFormat:'LLL'}}">
 	<ion-content>
-	<p class="item item-divider">{{trackerInfo.createdDate}}</p>
-	<input type="text" ng-model="trackerInfo.value">
-	<button class="button button-block button-energized"
-		ng-click="updateEntry()">Lưu</button>
+	<p class="item item-divider item-button-right" style="font-size: 18px;">
+	<button class="button button-small icon-left cautieu-button"
+		ng-click="updateEntry()">Lưu
+		</button></p>
+	<textarea class="notes-style" ng-model="trackerInfo.value"></textarea>
 	</ion-content> 
 </ion-view>

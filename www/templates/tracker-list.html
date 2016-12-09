@@ -1,31 +1,47 @@
-<ion-view view-title="Ghi chú" alight-title="center">
+<ion-view view-title="Ghi chú">
   <ion-content  class="padding">
+  	<link rel="stylesheet" type="text/css" href="css/view/timeline.css">
 
-  <ion-list ng-show="startInsert">
-    <ion-item>
-    	  <label class="item item-input item-floating-label">
-		    <span class="input-label">Nhập ghi chú</span>
-		    <input id="input-note" type="text" ng-model="newTracker.name" placeholder="Nhập ghi chú">
-		  </label>
-    </ion-item>
-   </ion-list>
-   
-	<div class="button-bar">
-	  <a class="button" ng-click="addNewTracker()">{{startInsert ? newTracker.name == '' ? 'Bỏ qua' : 'Lưu' : 'Thêm'}}</a>
-	  <a class="button" ng-click="toggleEdit()">{{editButtonLabel}}</a>
-	</div>
-	
+	  <ion-list ng-show="startInsert">
+	    <ion-item>
+	    	  <label class="item item-input item-floating-label">
+			    <span class="input-label">Nhập ghi chú</span>
+			    <input id="input-note" type="text" ng-model="newTracker.value" placeholder="Nhập ghi chú">
+			  </label>
+	    </ion-item>
+	   </ion-list>
+	   
+		<div class="button-bar ">
+		  <a class="button cautieu_button" ng-click="addNewTracker()">{{startInsert ? newTracker.value == '' ? 'Bỏ qua' : 'Lưu' : 'Thêm'}}</a>
+		  <a class="button" ng-click="toggleEdit()">{{editButtonLabel}}</a>
+		</div>
+
+	    <div class="divider-title"><b>Danh sách ghi chú</b></div>
+	    <ul class="timeline">
+	        <li ng-click="toggleTracker(tracker.id, $index)" ng-repeat="tracker in trackersList track by $index">
+	          <div class="timeline-thumb {{shouldShowDelete ? 'bg-color-red' : 'bg-color-green'}} timeline-icon">
+	            <i class="{{shouldShowDelete ? 'ion-minus-circled' : 'ion-chatbubble-working'}}"></i>
+	          </div>
+	          <div class="timeline-item">
+		    	<h4><b>{{tracker.createdDate | amUtc | amLocal | amDateFormat:'LLL'}}</b></h4>
+		    	<p>{{tracker.value | limitTo: 300 }}{{tracker.value.length > 300 ? '&hellip;' : ''}}</p>
+	          </div>
+			</li>
+		</ul>
+	<!--   	
+
    <ion-item-group>
-	   	<ion-item class="item item-divider">
+   <ion-item class="item item-divider">
 	    	Danh sách ghi chú
 	    </ion-item>
 	    <ion-item ng-show="loadingTrackers">
 	     	<ion-spinner icon="spiral"></ion-spinner>
 	    </ion-item>
-	    <ion-item ng-click="toggleTracker(tracker.id, $index)" class="item-icon-right" ng-repeat="tracker in trackersList track by $index">
-	    	{{tracker.name}}
+	    <ion-item ng-click="toggleTracker(tracker.id, $index)" class="item-text-wrap item-icon-right" ng-repeat="tracker in trackersList track by $index">
+	    	<b>{{tracker.createdDate | amDateFormat:'LLL'}}</b>
+	    	<p>{{tracker.value | limitTo: 300 }}{{tracker.value.length > 300 ? '&hellip;' : ''}}</p>
 	    	<i class="icon {{shouldShowDelete ? 'ion-minus-circled' : 'ion-edit'}}"></i>
 	    </ion-item>
-   </ion-item-group>
+	    </ion-item-group> -->
   </ion-content>
 </ion-view>
