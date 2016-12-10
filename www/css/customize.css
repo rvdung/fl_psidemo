@@ -49,3 +49,18 @@ textarea.notes-style {
 	padding: 2px 10px;
 	border: solid 1px #ddd;
 }
+
+  /* -------------------- Select Box Styles: danielneumann.com Method */
+/* -------------------- Source: http://danielneumann.com/blog/how-to-style-dropdown-with-css-only/ */
+#mainselection select {
+   font-size: 20px;   
+}
+
+.backgroundGreen {
+   background-color: #007A3D !important;
+   color:white !important;
+   font-weight:bold !important;
+}
+.border-bottom-solid-gray {	
+    border-bottom: solid 1px #ddd;
+}
