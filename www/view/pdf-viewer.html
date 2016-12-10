@@ -2,9 +2,9 @@
 ion-arrow-left-a button-clear button-stable no-padding-left" on-touch="goBack()">
 </a>
 <div class="row nav_btn_div">
-    <button class="nav_btn button button-clear button-light  ion-chevron-left  no-padding-left" on-touch="goPrevious()"> </button>
+    <a class="nav_btn button button-clear button-light  ion-chevron-left  no-padding-left" on-touch="goPrevious()"> </a>
     <div style="width: 80%;" on-double-tap="toggle()"></div>
-    <button class=" nav_btn button button-clear button-light ion-chevron-right no-padding-right " on-touch="goNext() "> </button>
+    <a class=" nav_btn button button-clear button-light ion-chevron-right no-padding-right " on-touch="goNext()"> </a>
 </div>
 <ion-content scroll="false" style="max-width: 100%; max-width: 100%;" ng-controller='viewPDFCtrl' on-double-tap="toggle()">
     <canvas ionic-canvas class="landscape"></canvas>
