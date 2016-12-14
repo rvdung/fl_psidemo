@@ -1,11 +1,9 @@
 .center-screen {
-	position:absolute;
-    top: 50%;
-    left: 90%;
-    height:18em;
-    margin-top: -8em; /*set to a negative number 1/2 of your height*/
-    margin-left: -20em; /*set to a negative number 1/2 of your width*/
-    background: transparent;
+	background: transparent none repeat scroll 0 0;
+    height: 18em;
+    position: absolute;
+    top: calc(50vh - 120px);
+    width: 100%;
 }
 .login-content {
 	width: 100%;

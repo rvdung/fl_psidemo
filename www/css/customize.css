@@ -59,8 +59,13 @@ textarea.notes-style {
 .backgroundGreen {
    background-color: #007A3D !important;
    color:white !important;
-   font-weight:bold !important;
+   font-weight:bold;
+   font-size: 14pt !important;
 }
 .border-bottom-solid-gray {	
     border-bottom: solid 1px #ddd;
+}
+
+.backgroundGreen > option {
+    font-weight: normal;
 }
