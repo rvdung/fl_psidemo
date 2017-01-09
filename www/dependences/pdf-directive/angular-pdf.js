@@ -43,15 +43,15 @@
                 var pageToDisplay = isFinite(attrs.page) ? parseInt(attrs.page) : 1;
                 var pageFit = attrs.scale === 'page-fit';
                 var scale = attrs.scale > 0 ? attrs.scale : 1;
-                // var isRotate = false;
-
+                var isRotateFromPortraitToLandscape = false;
+                var isRotateFromLandscapeToPortrait = false;
                 //always have two canvas, first one always portrait, second one always landscape
                 var canvas = element.find('canvas')[0];
-                // setClassForCanvas(canvas);
+                setClassForCanvas(canvas);
                 debug = attrs.hasOwnProperty('debug') ? attrs.debug : false;
                 var creds = attrs.usecredentials;
                 var ctx = canvas.getContext('2d');
-
+                var isInit = true;
                 PDFJS.disbleWorker = true;
                 scope.pageNum = pageToDisplay;
 
@@ -61,6 +61,7 @@
 
                 function renderPageNum(page) {
                     clearCanvas();
+                    setClassForCanvas(canvas);
                     if (renderTask) {
                         renderTask._internalRenderTask.cancel();
                     }
@@ -69,9 +70,25 @@
 
                     var pageWidthScale;
                     console.log("clientRect.width: " + clientRect.width + " x clientRect.height: " + clientRect.height);
-                    console.log("viewport.width: " + viewport.width + " x viewport.width: " + viewport.height);
-                    pageWidthScale = clientRect.height / viewport.height;
+                    console.log("viewport.width: " + viewport.width + " x viewport.height: " + viewport.height);
+                    if (canvas.getAttribute('class') == 'portrait') {
+                        if (isRotateFromLandscapeToPortrait) {
+                            pageWidthScale = clientRect.width / viewport.width;
+                            console.log('rotate to portrait');
 
+                        } else {
+                            pageWidthScale = clientRect.width / viewport.width;
+                            console.log('portrait none rotate');
+                        }
+                    } else {
+                        if (isRotateFromPortraitToLandscape) {
+                            pageWidthScale = clientRect.height / viewport.height;
+                            console.log('rotate to landscape');
+                        } else {
+                            console.log('landscape none rotate');
+                            pageWidthScale = clientRect.height / viewport.height;
+                        }
+                    }
                     viewport = page.getViewport(pageWidthScale);
                     console.log("pageWidthScale: " + pageWidthScale);
                     setCanvasDimensions(canvas, viewport.width, viewport.height);
@@ -93,7 +110,8 @@
                 }
 
                 scope.goPrevious = function() {
-
+                    isRotateFromPortraitToLandscape = false;
+                    isRotateFromLandscapeToPortrait = false;
                     if (scope.pageToDisplay <= 1 || scope.showAdv === true) {
                         console.log('previous < 1');
 
@@ -103,10 +121,12 @@
                         scope.renderPage(scope.pageToDisplay);
                         console.log('render');
                     }
+
                 };
 
                 scope.goNext = function() {
-
+                    isRotateFromPortraitToLandscape = false;
+                    isRotateFromLandscapeToPortrait = false;
                     if (scope.pageToDisplay >= pdfDoc.numPages || scope.showAdv === true) {
                         console.log('next > numpages');
 
@@ -116,6 +136,7 @@
                         scope.renderPage(scope.pageToDisplay);
                         console.log('render');
                     }
+
                 };
 
                 function clearCanvas() {
@@ -123,7 +144,6 @@
                         ctx.clearRect(0, 0, canvas.width, canvas.height);
                         console.log('clear ctx');
                     }
-                    console.log('clear');
                 }
 
                 function renderPDF() {
@@ -181,8 +201,30 @@
                     }
                 });
 
+                function setClassForCanvas(canvas) {
+                    console.log(window.orientation);
+                    if (window.orientation == 0 || window.orientation == 180) {
+                        canvas.setAttribute('class', 'portrait');
+                    } else {
+                        canvas.setAttribute('class', 'landscape');
+                    }
+                }
 
-
+                angular.element($window).bind('orientationchange', function() {
+                    console.log(window.orientation);
+                    if (isInit) {
+                        renderPDF();
+                    } else {
+                        setClassForCanvas(canvas);
+                        if (window.orientation == 0 || window.orientation == 180) {
+                            isRotateFromLandscapeToPortrait = true;
+                        } else {
+                            isRotateFromPortraitToLandscape = true;
+                        }
+                        scope.renderPage(scope.pageToDisplay != null ? scope.pageToDisplay : 1);
+                    }
+                    isInit = false;
+                });
             }
         };
     }]);

@@ -1,5 +1,5 @@
 psiApp.controller('PDFCtrl', function($scope, $ionicHistory, $stateParams, pageService,
-    MenuService) {
+    MenuService, $state) {
 
     MenuService.getMenuItemsByCode($stateParams.menuCode, function(menuItem) {
         if (menuItem != null) {
@@ -7,15 +7,10 @@ psiApp.controller('PDFCtrl', function($scope, $ionicHistory, $stateParams, pageS
             $scope.pdfUrl = menuItem.resource;
         }
     });
-
+    $scope.rotate = window.orientation;
     $scope.$on('$ionicView.beforeEnter', function() {
-        screen.lockOrientation('landscape');
-        console.log('enter - lock');
-    });
-
-    $scope.$on('$ionicView.afterLeave', function() {
         screen.unlockOrientation();
-        console.log('leave - unlock')
+        console.log('unlock')
     });
 
     $scope.goBack = function() {
@@ -46,5 +41,4 @@ psiApp.controller('PDFCtrl', function($scope, $ionicHistory, $stateParams, pageS
             $scope.showAdv = false;
         });
     }, 3000);
-
 });

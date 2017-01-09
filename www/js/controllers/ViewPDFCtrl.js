@@ -1,7 +1,7 @@
 psiApp
     .controller(
         'viewPDFCtrl',
-        function($scope, pageService, $ionicHistory) {
+        function($scope, pageService, $ionicHistory, $state) {
 
             $scope.pageService = pageService;
 
@@ -16,4 +16,6 @@ psiApp
                     $scope.show = true;
                 }
             }
+
+
         });
