@@ -67,7 +67,7 @@
 
                 function renderPageNum(page) {
                     clearCanvas();
-                    setClassForCanvas(canvas, middleDiv, nextBtn, previousBtn);
+
                     if (renderTask) {
                         renderTask._internalRenderTask.cancel();
                     }
@@ -225,12 +225,14 @@
                 angular.element($window).bind('orientationchange', function() {
                     console.log(window.orientation);
                     if (window.orientation == 0 || window.orientation == 180) {
-                        $('#previousBtn').removeClass('nav_btn_landscape');
-                        $('#nextBtn').removeClass('nav_btn_landscape');
+                        previousBtn.removeClass('nav_btn_landscape');
+                        nextBtn.removeClass('nav_btn_landscape');
                     } else {
-                        $('#previousBtn').removeClass('nav_btn_portrait');
-                        $('#nextBtn').removeClass('nav_btn_portrait');
+                        nextBtn.removeClass('nav_btn_portrait');
+                        previousBtn.removeClass('nav_btn_portrait');
                     }
+                    setClassForCanvas(canvas, middleDiv, nextBtn, previousBtn);
+
                     renderPDF();
 
                 });
