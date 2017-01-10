@@ -1,5 +1,5 @@
 psiApp.controller('PDFCtrl', function($scope, $ionicHistory, $stateParams, pageService,
-    MenuService) {
+    MenuService, $state) {
 
     MenuService.getMenuItemsByCode($stateParams.menuCode, function(menuItem) {
         if (menuItem != null) {
@@ -7,15 +7,10 @@ psiApp.controller('PDFCtrl', function($scope, $ionicHistory, $stateParams, pageS
             $scope.pdfUrl = menuItem.resource;
         }
     });
-
+    $scope.rotate = window.orientation;
     $scope.$on('$ionicView.beforeEnter', function() {
-        screen.lockOrientation('landscape');
-        console.log('enter - lock');
-    });
-
-    $scope.$on('$ionicView.afterLeave', function() {
         screen.unlockOrientation();
-        console.log('leave - unlock')
+        console.log('unlock')
     });
 
     $scope.goBack = function() {
@@ -32,10 +27,15 @@ psiApp.controller('PDFCtrl', function($scope, $ionicHistory, $stateParams, pageS
     $scope.getAdvUrl = function() {
         switch ($scope.randomNumber) {
             case 1:
+            	$scope.popupDivColor = 'green';
                 return "resources/adv/test1.jpg";
             case 2:
+
+            	$scope.popupDivColor = 'orange';
                 return "resources/adv/test2.jpg";
             case 3:
+
+            	$scope.popupDivColor = 'green';
                 return "resources/adv/test3.jpg";
         }
     }
@@ -46,5 +46,4 @@ psiApp.controller('PDFCtrl', function($scope, $ionicHistory, $stateParams, pageS
             $scope.showAdv = false;
         });
     }, 3000);
-
 });

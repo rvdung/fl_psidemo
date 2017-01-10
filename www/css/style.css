@@ -6,9 +6,14 @@
     width: 100%;
 }
 
-.nav_btn {
+.nav_btn_landscape {
     font-size: 50px;
     color: rgba(255, 255, 255, 1) !important;
+}
+
+.nav_btn_portrait {
+    font-size: 50px;
+    color: rgba(0, 0, 0, 0.6) !important;
 }
 
 .page_number_div {
@@ -40,6 +45,7 @@
     margin: auto;
     width: 100%;
     height: 100%;
+    background: rgba(0, 0, 0, 1);
 }
 
 .divPortrait {
@@ -59,6 +65,7 @@
     margin: auto;
     width: 100%;
     height: 100%;
+    background: rgba(0, 0, 0, 1);
 }
 
 .hiddenPDF {
@@ -122,3 +129,20 @@ background: rgba(238, 238, 238, .9);
 width: 960px;
 */
 }
+
+.popup-div {
+    float: left;
+    height: 100%;
+    position: absolute;
+    width: 100%;
+    z-index: 1000;
+}
+
+.popup-div.orange {
+	background-color: #F7921C;
+}
+
+.popup-div.green {
+	background-color: #007A3D;
+}
+

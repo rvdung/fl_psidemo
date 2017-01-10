@@ -11,11 +11,6 @@
         "type": "v",
         "resource": "resources/roto-video.mp4"
     }, {
-        "code": "003",
-        "label": "Các vật liệu cần dùng",
-        "type": "s",
-        "resource": "resources/tien_giang_nvl.pdf"
-    }, {
         "code": "004",
         "label": "Các câu hỏi thường gặp về ROTO",
         "type": "s",

@@ -31,14 +31,19 @@ psiApp.controller('videoCtrl', function($scope, $stateParams, pageService, $ioni
     $scope.getAdvUrl = function() {
         switch ($scope.randomNumber) {
             case 1:
+            	$scope.popupDivColor = 'green';
                 return "resources/adv/test1.jpg";
             case 2:
+
+            	$scope.popupDivColor = 'orange';
                 return "resources/adv/test2.jpg";
             case 3:
+
+            	$scope.popupDivColor = 'green';
                 return "resources/adv/test3.jpg";
         }
     }
-
+    
     $scope.showAdv = true;
     setTimeout(function() {
         $scope.$apply(function() {
