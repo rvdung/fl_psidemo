@@ -47,11 +47,17 @@
                 var isRotateFromLandscapeToPortrait = false;
                 //always have two canvas, first one always portrait, second one always landscape
                 var canvas = element.find('canvas')[0];
-                setClassForCanvas(canvas);
+                var middleDiv = $('#middleBtn');
+                var previousBtn = $('#previousBtn');
+                var nextBtn = $('#nextBtn');
+
+                setClassForCanvas(canvas, middleDiv, nextBtn, previousBtn);
                 debug = attrs.hasOwnProperty('debug') ? attrs.debug : false;
                 var creds = attrs.usecredentials;
                 var ctx = canvas.getContext('2d');
-                var isInit = true;
+
+
+                console.log(middleDiv);
                 PDFJS.disbleWorker = true;
                 scope.pageNum = pageToDisplay;
 
@@ -61,7 +67,7 @@
 
                 function renderPageNum(page) {
                     clearCanvas();
-                    setClassForCanvas(canvas);
+                    setClassForCanvas(canvas, middleDiv, nextBtn, previousBtn);
                     if (renderTask) {
                         renderTask._internalRenderTask.cancel();
                     }
@@ -72,22 +78,22 @@
                     console.log("clientRect.width: " + clientRect.width + " x clientRect.height: " + clientRect.height);
                     console.log("viewport.width: " + viewport.width + " x viewport.height: " + viewport.height);
                     if (canvas.getAttribute('class') == 'portrait') {
-                        if (isRotateFromLandscapeToPortrait) {
-                            pageWidthScale = clientRect.width / viewport.width;
-                            console.log('rotate to portrait');
+                        // if (isRotateFromLandscapeToPortrait) {
+                        //     pageWidthScale = clientRect.width / viewport.width;
+                        //     console.log('rotate to portrait');
 
-                        } else {
-                            pageWidthScale = clientRect.width / viewport.width;
-                            console.log('portrait none rotate');
-                        }
+                        // } else {
+                        pageWidthScale = clientRect.width / viewport.width;
+                        console.log('portrait none rotate');
+                        // }
                     } else {
-                        if (isRotateFromPortraitToLandscape) {
-                            pageWidthScale = clientRect.height / viewport.height;
-                            console.log('rotate to landscape');
-                        } else {
-                            console.log('landscape none rotate');
-                            pageWidthScale = clientRect.height / viewport.height;
-                        }
+                        // if (isRotateFromPortraitToLandscape) {
+                        //     pageWidthScale = clientRect.height / viewport.height;
+                        //     console.log('rotate to landscape');
+                        // } else {
+                        console.log('landscape none rotate');
+                        pageWidthScale = clientRect.height / viewport.height;
+                        // }
                     }
                     viewport = page.getViewport(pageWidthScale);
                     console.log("pageWidthScale: " + pageWidthScale);
@@ -110,8 +116,8 @@
                 }
 
                 scope.goPrevious = function() {
-                    isRotateFromPortraitToLandscape = false;
-                    isRotateFromLandscapeToPortrait = false;
+                    // isRotateFromPortraitToLandscape = false;
+                    // isRotateFromLandscapeToPortrait = false;
                     if (scope.pageToDisplay <= 1 || scope.showAdv === true) {
                         console.log('previous < 1');
 
@@ -125,8 +131,8 @@
                 };
 
                 scope.goNext = function() {
-                    isRotateFromPortraitToLandscape = false;
-                    isRotateFromLandscapeToPortrait = false;
+                    // isRotateFromPortraitToLandscape = false;
+                    // isRotateFromLandscapeToPortrait = false;
                     if (scope.pageToDisplay >= pdfDoc.numPages || scope.showAdv === true) {
                         console.log('next > numpages');
 
@@ -201,29 +207,32 @@
                     }
                 });
 
-                function setClassForCanvas(canvas) {
+                function setClassForCanvas(canvas, middleDiv, nextBtn, previousBtn) {
                     console.log(window.orientation);
                     if (window.orientation == 0 || window.orientation == 180) {
                         canvas.setAttribute('class', 'portrait');
+                        middleDiv.css("width", "66%");
+                        nextBtn.addClass('nav_btn_portrait');
+                        previousBtn.addClass('nav_btn_portrait');
                     } else {
                         canvas.setAttribute('class', 'landscape');
+                        middleDiv.css("width", "80%");
+                        nextBtn.addClass('nav_btn_landscape');
+                        previousBtn.addClass('nav_btn_landscape');
                     }
                 }
 
                 angular.element($window).bind('orientationchange', function() {
                     console.log(window.orientation);
-                    if (isInit) {
-                        renderPDF();
+                    if (window.orientation == 0 || window.orientation == 180) {
+                        $('#previousBtn').removeClass('nav_btn_landscape');
+                        $('#nextBtn').removeClass('nav_btn_landscape');
                     } else {
-                        setClassForCanvas(canvas);
-                        if (window.orientation == 0 || window.orientation == 180) {
-                            isRotateFromLandscapeToPortrait = true;
-                        } else {
-                            isRotateFromPortraitToLandscape = true;
-                        }
-                        scope.renderPage(scope.pageToDisplay != null ? scope.pageToDisplay : 1);
+                        $('#previousBtn').removeClass('nav_btn_portrait');
+                        $('#nextBtn').removeClass('nav_btn_portrait');
                     }
-                    isInit = false;
+                    renderPDF();
+
                 });
             }
         };

@@ -8,11 +8,13 @@ psiApp
             $scope.show = true;
             $scope.toggle = function() {
                 if ($scope.show) {
-                    $(".nav_btn").fadeOut();
+                    $("#previousBtn").fadeOut();
+                    $("#nextBtn").fadeOut();
                     $scope.show = false;
 
                 } else {
-                    $(".nav_btn").fadeIn();
+                    $("#previousBtn").fadeIn();
+                    $("#nextBtn").fadeIn();
                     $scope.show = true;
                 }
             }

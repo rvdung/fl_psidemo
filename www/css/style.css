@@ -6,9 +6,14 @@
     width: 100%;
 }
 
-.nav_btn {
+.nav_btn_landscape {
     font-size: 50px;
     color: rgba(255, 255, 255, 1) !important;
+}
+
+.nav_btn_portrait {
+    font-size: 50px;
+    color: rgba(0, 0, 0, 0.6) !important;
 }
 
 .page_number_div {
