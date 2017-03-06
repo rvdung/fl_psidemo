@@ -20,7 +20,9 @@ psiApp.controller('HomeCtrl', function($scope, $rootScope, $state, MenuService, 
 			$state.go('videoplayer', {
 				menuCode : menuItem.code
 			});
-		} else {
+		} else if (menuItem.type == 'g') {
+			$state.go('game');
+		}else {
 			$state.go('tab.home');
 		}
 	}

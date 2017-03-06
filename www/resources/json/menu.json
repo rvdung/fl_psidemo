@@ -20,6 +20,11 @@
         "label": "Các câu hỏi thường gặp về ROTO",
         "type": "s",
         "resource": "resources/tg_nha_vs_roto.pdf"
+    }, {
+        "code": "005",
+        "label": "Game",
+        "type": "g",
+        "resource": ""
     }]
 }, {
     "provinceCode": "002",

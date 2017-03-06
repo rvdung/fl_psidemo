@@ -39,6 +39,13 @@ psiApp.config(function($stateProvider, $urlRouterProvider,
 		controller : 'LoginCtrl'
 	})
 
+	.state('game', {
+		cache: false,
+		url : '/home/game',
+		templateUrl : 'templates/game.html',
+		controller : 'GameCtrl'
+	})
+
 	// Each tab has its own nav history stack:
 
 	.state('tab.home', {
