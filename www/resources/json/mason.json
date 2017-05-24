@@ -4,4 +4,9 @@
     {"code":"chogao", "label":"Huyện Chợ Gạo", "link":"resources/json/mason_chogao.json"},
     {"code":"gocongtay", "label":"Huyện Gò Công Tây", "link":"resources/json/mason_gocongtay.json"},
     {"code":"gocong", "label":"Thị Xã Gò Công", "link":"resources/json/mason_gocong.json"} ],
- "daknong":[]}
+ "daknong":[{"code":"caibe", "label":"Huyện Cái Bè", "link":"resources/json/mason_caibe.json"},
+    {"code":"cailay", "label":"Huyện Cai Lậy", "link":"resources/json/mason_cailay.json"},
+    {"code":"chauthanh", "label":"Huyện Châu Thành", "link":"resources/json/mason_chauthanh.json"},
+    {"code":"chogao", "label":"Huyện Chợ Gạo", "link":"resources/json/mason_chogao.json"},
+    {"code":"gocongtay", "label":"Huyện Gò Công Tây", "link":"resources/json/mason_gocongtay.json"},
+    {"code":"gocong", "label":"Thị Xã Gò Công", "link":"resources/json/mason_gocong.json"}]}
