@@ -19,17 +19,17 @@
 }, {
     "provinceCode": "002",
     "contents": [{
-        "code": "001",
+        "code": "005",
         "label": "Các vấn đề vệ sinh nói chung",
         "type": "s",
         "resource": "resources/van_de_vs_chung.pdf"
     }, {
-        "code": "002",
+        "code": "006",
         "label": "Xây dựng nhà vệ sinh thấm dội",
         "type": "s",
         "resource": "resources/dn_nha_vs_tham_doi.pdf"
     }, {
-        "code": "003",
+        "code": "007",
         "label": "5 bước xây dựng nhà vệ sinh",
         "type": "v",
         "resource": "resources/thamdoi-video.mp4"
